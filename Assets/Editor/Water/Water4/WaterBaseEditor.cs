@@ -67,8 +67,8 @@ namespace UnityStandardAssets.Water
             GUILayout.Label("Main Colors", EditorStyles.boldLabel);
             GUILayout.Label("Alpha values define blending with realtime textures", EditorStyles.miniBoldLabel);
 
-            WaterEditorUtility.SetMaterialColor("_BaseColor", EditorGUILayout.ColorField("Refraction", WaterEditorUtility.GetMaterialColor("_BaseColor", oceanMaterial)), oceanMaterial);
-            WaterEditorUtility.SetMaterialColor("_ReflectionColor", EditorGUILayout.ColorField("Reflection", WaterEditorUtility.GetMaterialColor("_ReflectionColor", oceanMaterial)), oceanMaterial);
+            //WaterEditorUtility.SetMaterialColor("_BaseColor", EditorGUILayout.ColorField("Refraction", WaterEditorUtility.GetMaterialColor("_BaseColor", oceanMaterial)), oceanMaterial);
+            //WaterEditorUtility.SetMaterialColor("_ReflectionColor", EditorGUILayout.ColorField("Reflection", WaterEditorUtility.GetMaterialColor("_ReflectionColor", oceanMaterial)), oceanMaterial);
 
             EditorGUILayout.Separator();
 
