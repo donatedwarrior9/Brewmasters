@@ -226,6 +226,34 @@ public class Cauldron : MonoBehaviour {
 		Debug.Log ("YOU FAIL!");
 	}
 
+	int currentStir = -1;
+	int lastStir = -1;
+	int lastLastStir = -1;
+	public void Stirred(int colliderIndex)
+	{
+		lastLastStir = lastStir;
+		lastStir = currentStir;
+		currentStir = colliderIndex;
+
+		if (IsClockwise (currentStir, lastStir) && IsClockwise (lastStir, lastLastStir) && IsClockwise (lastLastStir, currentStir)) {
+			Debug.Log ("Clockwise stir");
+			currentStir = -1;
+		}
+		if (IsCounterClockwise (currentStir, lastStir) && IsCounterClockwise (lastStir, lastLastStir) && IsCounterClockwise (lastLastStir, currentStir)) {
+			Debug.Log ("CounterClockwise stir");
+			currentStir = -1;
+		}
+	}
+
+	bool IsClockwise(int current, int last)
+	{
+		return (current == 1 && last == 0) || (current == 2 && last == 1) || (current == 0 && last == 2);
+	}
+	bool IsCounterClockwise(int current, int last)
+	{
+		return (current == 0 && last == 1) || (current == 2 && last == 0) || (current == 1 && last == 2);
+	}
+
 }
 [System.Serializable]
 public class Recipie {
