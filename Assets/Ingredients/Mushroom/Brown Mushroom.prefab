@@ -26,7 +26,7 @@ GameObject:
   - 114: {fileID: 114000010077485508}
   - 114: {fileID: 114000012536023434}
   m_Layer: 0
-  m_Name: Mushroom
+  m_Name: Brown Mushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
