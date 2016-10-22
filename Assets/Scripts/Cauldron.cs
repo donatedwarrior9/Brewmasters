@@ -267,6 +267,7 @@ public class Cauldron : MonoBehaviour {
 		heat = heat - (Time.deltaTime * heatDecay);
 		if (heat < 0)
 			heat = 0;
+		yield return null;
 	}
 
 }
