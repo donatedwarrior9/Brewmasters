@@ -6,7 +6,7 @@ public class EncounterArea : MonoBehaviour {
     public GameObject prefabToSpawn;
     public float minimumSpawnTime;
     public Animator anni;
-
+	public Transform spawnPoint;
     public void SetTrap(GameObject lure)
     {
         prefabToSpawn = lure.GetComponent<LurePotion>().getPrefabToSpawn();
@@ -21,8 +21,7 @@ public class EncounterArea : MonoBehaviour {
     }
     void spawn()
     {
-        Vector3 spawnpoint = new Vector3(33f, .1f, 23f);
-        Instantiate(prefabToSpawn, spawnpoint, Quaternion.identity);
+		Instantiate(prefabToSpawn, spawnPoint.position, Quaternion.identity);
     }
 
     void OnTriggerEnter(Collider other)
@@ -34,4 +33,11 @@ public class EncounterArea : MonoBehaviour {
         }
         SetTrap(other.gameObject);
     }
+
+	public void EnteredTrap(Skeleton enemy)
+	{
+		anni.SetTrigger ("closeTrigger");
+		Instantiate(enemy.myRewardPrefab, transform.position, Quaternion.identity);
+	}
+
 }
