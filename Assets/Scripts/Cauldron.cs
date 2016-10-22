@@ -6,7 +6,7 @@ public class Cauldron : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		StartCoroutine (ColorLoop ());
 	}
 
 	// Update is called once per frame
@@ -30,7 +30,6 @@ public class Cauldron : MonoBehaviour {
 		currentStep = 0;
 		currentStepStartedTime = Time.time;
 		addedIngredientsThisStep.Clear ();
-		ChangeCauldronColor ();
 	}
 
 	public Recipie currentRecipie;
@@ -47,6 +46,11 @@ public class Cauldron : MonoBehaviour {
 		// If there is no ingredient component, don't add it. We may want to make it vanish after some amount of time
 		if (!thisIngredient) {
 			// If the object can "respawn", respawn it. Otherwise, destroy it.
+			//>Vanish the thing if possible
+			return;
+		}
+		// You need to be working on a recipie
+		if (currentRecipie == null) {
 			//>Vanish the thing if possible
 			return;
 		}
@@ -71,6 +75,11 @@ public class Cauldron : MonoBehaviour {
 
 	void AddIngredient(Ingredient.IngredientType ingredientType)
 	{
+		// You need to be working on a recipie
+		if (currentRecipie == null)
+			return;
+		if (GetCurrentStep () == null)
+			return;
 		// Check if you added something WRONG!!!
 		bool recipieContainsIngredient = false;
 		foreach (IngredientAmount requiredIngredient in GetCurrentStep().requiredIngredients) {
@@ -133,6 +142,8 @@ public class Cauldron : MonoBehaviour {
 		
 	RecipieStep GetCurrentStep()
 	{
+		if (currentStep >= currentRecipie.steps.Length)
+			return null;
 		return currentRecipie.steps [currentStep];	
 	}
 
@@ -142,7 +153,6 @@ public class Cauldron : MonoBehaviour {
 		currentStepStartedTime = Time.time;
 		addedIngredientsThisStep.Clear ();
 		CancelInvoke ("RanOuttaTime");
-		ChangeCauldronColor ();
 		if (currentStep >= currentRecipie.steps.Length)
 			RecipiePassed ();
 		else {
@@ -153,14 +163,23 @@ public class Cauldron : MonoBehaviour {
 
 	}
 
-	public Renderer cauldronSurfaceRanderer;
-	void ChangeCauldronColor()
+	public Renderer cauldronSurfaceRenderer;
+	IEnumerator ColorLoop()
 	{
-		Color desiredColor = (currentStep == 0) ? Color.grey : Random.ColorHSV(0, 1, 0.5f, 1, 0.7f, 1, 1, 1);
-		float progress = currentStep / currentRecipie.steps.Length;
-		desiredColor = Color.Lerp (desiredColor, currentRecipie.finalColor, progress);
-		// Actually change cauldron color... something with cauldronSurfaceRanderer
-		// TODO ^
+		Material waterMaterial = cauldronSurfaceRenderer.material;
+		Color desiredColor = Color.grey;
+		float progress = 0;
+		while (true) {
+			desiredColor = (currentStep == 0 || currentRecipie == null) ? Color.grey : Random.ColorHSV(0, 1, 0.5f, 1, 0.7f, 1, 1, 1);
+			if (currentRecipie != null && currentRecipie.steps.Length > 0)
+				progress = currentStep / currentRecipie.steps.Length;
+			else
+				progress = 0;
+			desiredColor = Color.Lerp (desiredColor, currentRecipie.finalColor, progress);
+			waterMaterial.SetColor ("_BaseColor", Color.Lerp(Color.Lerp (waterMaterial.GetColor ("_BaseColor"), desiredColor, Time.deltaTime * 3), Color.clear, 0.5f));
+			waterMaterial.SetColor ("_ReflectionColor", Color.Lerp(waterMaterial.GetColor("_BaseColor"), Color.white, 0.5f));
+			yield return null;
+		}
 	}
 
 	void RanOuttaTime()
