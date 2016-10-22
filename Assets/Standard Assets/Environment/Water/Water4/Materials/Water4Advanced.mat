@@ -214,7 +214,7 @@ Material:
       second: {r: 1, g: 0.0182, b: 0.045714468, a: 0.027129691}
     - first:
         name: _BaseColor
-      second: {r: 0.49699998, g: 0.49699998, b: 0.49699998, a: 0.82}
+      second: {r: 0.578, g: 0.578, b: 0.578, a: 0.51}
     - first:
         name: _BumpDirection
       second: {r: 78.6, g: 40, b: 40, a: -40}
@@ -241,7 +241,7 @@ Material:
       second: {r: 0.6499999, g: -2.9203715, b: 1.6599998, a: -3.9363046}
     - first:
         name: _DistortParams
-      second: {r: 2.07, g: 0.08, b: 1.55, a: -1.15}
+      second: {r: -4, g: 0.08, b: 1.55, a: -1.15}
     - first:
         name: _Extinction
       second: {r: 4.5, g: 75, b: 300, a: 1}
@@ -283,7 +283,7 @@ Material:
       second: {r: 1, g: 1, b: 0, a: 0}
     - first:
         name: _ReflectionColor
-      second: {r: 0.47799987, g: 0.47799987, b: 0.47799987, a: 0.697}
+      second: {r: 0.722, g: 0.722, b: 0.722, a: 0.472}
     - first:
         name: _ReflectionTex_ST
       second: {r: 1, g: 1, b: 0, a: 0}

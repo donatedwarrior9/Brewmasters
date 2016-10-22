@@ -6,7 +6,7 @@ public class Cauldron : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		StartCoroutine (ColorLoop ());
 	}
 
 	// Update is called once per frame
@@ -30,7 +30,7 @@ public class Cauldron : MonoBehaviour {
 		currentStep = 0;
 		currentStepStartedTime = Time.time;
 		addedIngredientsThisStep.Clear ();
-		ChangeCauldronColor ();
+		SetNewColor ();
 	}
 
 	public Recipie currentRecipie;
@@ -47,6 +47,11 @@ public class Cauldron : MonoBehaviour {
 		// If there is no ingredient component, don't add it. We may want to make it vanish after some amount of time
 		if (!thisIngredient) {
 			// If the object can "respawn", respawn it. Otherwise, destroy it.
+			//>Vanish the thing if possible
+			return;
+		}
+		// You need to be working on a recipie
+		if (currentRecipie == null) {
 			//>Vanish the thing if possible
 			return;
 		}
@@ -71,6 +76,15 @@ public class Cauldron : MonoBehaviour {
 
 	void AddIngredient(Ingredient.IngredientType ingredientType)
 	{
+		// You need to be working on a recipie
+		if (currentRecipie == null) {
+			Debug.Log ("No current recipie!");
+			return;
+		}
+		if (GetCurrentStep () == null) {
+			Debug.Log ("No current step!");
+			return;
+		}
 		// Check if you added something WRONG!!!
 		bool recipieContainsIngredient = false;
 		foreach (IngredientAmount requiredIngredient in GetCurrentStep().requiredIngredients) {
@@ -94,8 +108,8 @@ public class Cauldron : MonoBehaviour {
 			newAmount.value = 1;
 			addedIngredientsThisStep.Add (newAmount);
 		}
-
 		CheckRecipieStatus ();
+		SetNewColor ();
 	}
 
 	void InstantiateSplashEffect(Ingredient ingredientAdded)
@@ -133,6 +147,8 @@ public class Cauldron : MonoBehaviour {
 		
 	RecipieStep GetCurrentStep()
 	{
+		if (currentStep >= currentRecipie.steps.Length)
+			return null;
 		return currentRecipie.steps [currentStep];	
 	}
 
@@ -142,7 +158,6 @@ public class Cauldron : MonoBehaviour {
 		currentStepStartedTime = Time.time;
 		addedIngredientsThisStep.Clear ();
 		CancelInvoke ("RanOuttaTime");
-		ChangeCauldronColor ();
 		if (currentStep >= currentRecipie.steps.Length)
 			RecipiePassed ();
 		else {
@@ -153,15 +168,48 @@ public class Cauldron : MonoBehaviour {
 
 	}
 
-	public Renderer cauldronSurfaceRanderer;
-	void ChangeCauldronColor()
+	float progress = 0;
+	void SetNewColor()
 	{
-		Color desiredColor = (currentStep == 0) ? Color.grey : Random.ColorHSV(0, 1, 0.5f, 1, 0.7f, 1, 1, 1);
-		float progress = currentStep / currentRecipie.steps.Length;
-		desiredColor = Color.Lerp (desiredColor, currentRecipie.finalColor, progress);
-		// Actually change cauldron color... something with cauldronSurfaceRanderer
-		// TODO ^
+		if (currentRecipie != null && currentRecipie.steps.Length > 0) {
+			progress = (float)currentStep / (float)currentRecipie.steps.Length;
+			desiredColor = Color.Lerp (Random.ColorHSV (0, 1, 0.5f, 1, 0.7f, 1, 1, 1), currentRecipie.finalColor, progress);
+		}
+		else {
+			progress = 0;
+			desiredColor = Color.gray;
+		}
+		Debug.Log (progress);
 	}
+
+	public Renderer cauldronSurfaceRenderer;
+	public Light cauldronGlow;
+	Color desiredColor = Color.grey;
+	public float colorChangeSpeed = 3;
+	IEnumerator ColorLoop()
+	{
+
+		Color smoothedColor = Color.grey;
+		Material waterMaterial = cauldronSurfaceRenderer.material;
+		while (true) {
+			smoothedColor = Color.Lerp (smoothedColor, desiredColor, Time.deltaTime * colorChangeSpeed);
+			waterMaterial.SetColor ("_BaseColor", MakeBaseColor(smoothedColor));
+			waterMaterial.SetColor ("_ReflectionColor", MakeReflectionColor(smoothedColor));
+			cauldronGlow.color = smoothedColor;
+			yield return null;
+		}
+	}
+
+	Color MakeBaseColor(Color input)
+	{
+		return new Color (input.r, input.g, input.b, 0.5f);
+	}
+
+	Color MakeReflectionColor(Color input)
+	{
+		return new Color (input.r * 1.2f, input.g * 1.2f, input.b * 1.2f, 0.5f);
+	}
+		
 
 	void RanOuttaTime()
 	{
