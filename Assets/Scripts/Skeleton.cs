@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class Skeleton : MonoBehaviour {
 	NavMeshAgent myagent;
-	public GameObject myRewardPrefab;
+    public enum monsterType { skeleton, zombie, pumpkinhead };
+    public monsterType MonsterType;
+	public GameObject []myRewardPrefab;
 	public GameObject deatheffectsPrefab;
 	IEnumerator Start () {
-		myagent = GetComponent<NavMeshAgent> ();
+        myagent = GetComponent<NavMeshAgent> ();
 		myagent.destination = FindObjectOfType<EncounterArea> ().transform.position;
 		while (myagent.remainingDistance > 0.5f)
 			yield return null;
