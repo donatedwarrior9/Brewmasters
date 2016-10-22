@@ -185,7 +185,7 @@ public class Cauldron : MonoBehaviour {
 
 	public Renderer cauldronSurfaceRenderer;
 	public Light cauldronGlow;
-	Color desiredColor = Color.grey;
+	public static Color desiredColor = Color.grey;
 	public float colorChangeSpeed = 3;
 	IEnumerator ColorLoop()
 	{
@@ -262,11 +262,13 @@ public class Cauldron : MonoBehaviour {
 	}
 	public float heatDecay = 1;
 	public float heatIncreasePerStick = 15;
+	public Fire fire;
 	IEnumerator HeatLoop()
 	{
 		heat = heat - (Time.deltaTime * heatDecay);
 		if (heat < 0)
 			heat = 0;
+		fire.SetHeat (heat);
 		yield return null;
 	}
 
