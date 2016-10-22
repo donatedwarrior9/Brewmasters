@@ -52,10 +52,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011502661880}
-  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0.00000058114523}
-  m_LocalPosition: {x: -0.153, y: 2.053, z: 0.374}
+  m_LocalRotation: {x: -0.011130022, y: -0.10119769, z: -0.991151, w: 0.08517618}
+  m_LocalPosition: {x: -0.127, y: 0.918, z: 0.062}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -11.627001, y: 0.27400002, z: 189.54399}
   m_Children:
   - {fileID: 4000013800058076}
   m_Father: {fileID: 0}
@@ -67,8 +67,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010960646156}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.2702, z: 0}
-  m_LocalScale: {x: 2.0817049, y: 17.690838, z: 2.0817044}
+  m_LocalPosition: {x: -0, y: 0.349, z: -0}
+  m_LocalScale: {x: 2.544731, y: 21.105927, z: 2.5447311}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180.00002}
   m_Children: []
   m_Father: {fileID: 4000011972947384}
@@ -108,7 +108,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010960646156}
-  m_Mesh: {fileID: 4300000, guid: 3b7298b956b65b54094063f662b5626e, type: 3}
+  m_Mesh: {fileID: 4300000, guid: b02d2283daa1f334fbf2eaf3910bc593, type: 3}
 --- !u!54 &54000011338100098
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -134,8 +134,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.58140904, z: 0.02}
-  m_Center: {x: 0.00000027107413, y: 0.25886512, z: 0}
+  m_Size: {x: 0.02, y: 0.64914757, z: 0.02}
+  m_Center: {x: -0.000000027008355, y: 0.28365895, z: 0.00000043213367}
 --- !u!114 &114000010922946022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -159,12 +159,12 @@ MonoBehaviour:
   grabOverrideButton: 8
   rumbleOnGrab: {x: 0, y: 0}
   allowedGrabControllers: 0
-  precisionSnap: 0
+  precisionSnap: 1
   rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
   hideControllerOnGrab: 0
   stayGrabbedOnTeleport: 1
-  grabAttachMechanic: 0
+  grabAttachMechanic: 4
   detachThreshold: 1500
   springJointStrength: 500
   springJointDamper: 50

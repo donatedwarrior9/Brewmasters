@@ -20,6 +20,7 @@ public class Patch : MonoBehaviour {
     }
 	void Grow()
 	{
+		Debug.Log ("Grow");
 		int randomNumToSpawn = Random.Range (1, 5);
 		for (int i = 0; i < randomNumToSpawn; i++)
 		{
