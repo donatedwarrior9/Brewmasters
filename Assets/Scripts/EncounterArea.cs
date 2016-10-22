@@ -5,22 +5,24 @@ public class EncounterArea : MonoBehaviour {
 
     public GameObject prefabToSpawn;
     public float minimumSpawnTime;
+    public Animator anni;
+
     public void SetTrap(GameObject lure)
     {
         prefabToSpawn = lure.GetComponent<LurePotion>().getPrefabToSpawn();
         Destroy(lure);
         //Invoke("Grow", minimumSpawnTime + Random.Range(minimumSpawnTime / 2, minimumSpawnTime * 1.5f));
-        StartCoroutine(delayedGrow(minimumSpawnTime, prefabToSpawn));
+        StartCoroutine(delayedSpawn(minimumSpawnTime, prefabToSpawn));
     }
-    IEnumerator delayedGrow(float delay, GameObject toSpawn)
+    IEnumerator delayedSpawn(float delay, GameObject toSpawn)
     {
         yield return new WaitForSeconds(delay);
         spawn();
     }
     void spawn()
     {
-        int randomNumToSpawn = Random.Range(1, 5);
-        Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+        Vector3 spawnpoint = new Vector3(33f, .1f, 23f);
+        Instantiate(prefabToSpawn, spawnpoint, Quaternion.identity);
     }
 
     void OnTriggerEnter(Collider other)

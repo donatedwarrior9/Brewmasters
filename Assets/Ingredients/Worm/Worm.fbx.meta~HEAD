@@ -1,17 +1,31 @@
 fileFormatVersion: 2
-guid: d2885702f9bef4849b7387649e7fc47b
-timeCreated: 1469087503
-licenseType: Store
+guid: a98823ead89d2e04aa9824cfe3028adb
+timeCreated: 1477168708
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: segment
-    400000: //RootNode
-    400002: segment
-    2300000: segment
-    3300000: segment
-    4300000: segment
+    100000: joint1
+    100002: joint2
+    100004: joint3
+    100006: joint4
+    100008: joint5
+    100010: joint6
+    100012: joint7
+    100014: //RootNode
+    100016: worm
+    400000: joint1
+    400002: joint2
+    400004: joint3
+    400006: joint4
+    400008: joint5
+    400010: joint6
+    400012: joint7
+    400014: //RootNode
+    400016: worm
+    4300000: worm
+    9500000: //RootNode
+    13700000: worm
   materials:
     importMaterials: 1
     materialName: 0
@@ -70,7 +84,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
