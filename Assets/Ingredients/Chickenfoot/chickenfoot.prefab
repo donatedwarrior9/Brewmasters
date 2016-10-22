@@ -27,7 +27,7 @@ GameObject:
   - 114: {fileID: 114000013236840678}
   - 114: {fileID: 114000010127605004}
   m_Layer: 0
-  m_Name: Brown Mushroom (1)
+  m_Name: chickenfoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1897566e4c9f294cba1f071ceced850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 7
+  type: 12
 --- !u!114 &114000012230191794
 MonoBehaviour:
   m_ObjectHideFlags: 1
