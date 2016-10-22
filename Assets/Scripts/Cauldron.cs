@@ -30,6 +30,7 @@ public class Cauldron : MonoBehaviour {
 		currentStep = 0;
 		currentStepStartedTime = Time.time;
 		addedIngredientsThisStep.Clear ();
+		ChangeCauldronColor ();
 	}
 
 	public Recipie currentRecipie;
@@ -141,6 +142,7 @@ public class Cauldron : MonoBehaviour {
 		currentStepStartedTime = Time.time;
 		addedIngredientsThisStep.Clear ();
 		CancelInvoke ("RanOuttaTime");
+		ChangeCauldronColor ();
 		if (currentStep >= currentRecipie.steps.Length)
 			RecipiePassed ();
 		else {
@@ -149,6 +151,16 @@ public class Cauldron : MonoBehaviour {
 				Invoke("RanOuttaTime", currentRecipie.steps[currentStep].maxStepTime);
 		}
 
+	}
+
+	public Renderer cauldronSurfaceRanderer;
+	void ChangeCauldronColor()
+	{
+		Color desiredColor = (currentStep == 0) ? Color.grey : Random.ColorHSV(0, 1, 0.5f, 1, 0.7f, 1, 1, 1);
+		float progress = currentStep / currentRecipie.steps.Length;
+		desiredColor = Color.Lerp (desiredColor, currentRecipie.finalColor, progress);
+		// Actually change cauldron color... something with cauldronSurfaceRanderer
+		// TODO ^
 	}
 
 	void RanOuttaTime()
@@ -171,6 +183,7 @@ public class Cauldron : MonoBehaviour {
 public class Recipie {
 	public string name;
 	public RecipieStep[] steps;
+	public Color finalColor;
 }
 
 [System.Serializable]
