@@ -7,6 +7,7 @@ public class Cauldron : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		StartCoroutine (ColorLoop ());
+		StartCoroutine (HeatLoop ());
 	}
 
 	// Update is called once per frame
@@ -236,11 +237,11 @@ public class Cauldron : MonoBehaviour {
 		currentStir = colliderIndex;
 
 		if (IsClockwise (currentStir, lastStir) && IsClockwise (lastStir, lastLastStir) && IsClockwise (lastLastStir, currentStir)) {
-			Debug.Log ("Clockwise stir");
+			StirClockWise ();
 			currentStir = -1;
 		}
 		if (IsCounterClockwise (currentStir, lastStir) && IsCounterClockwise (lastStir, lastLastStir) && IsCounterClockwise (lastLastStir, currentStir)) {
-			Debug.Log ("CounterClockwise stir");
+			StirCounterClockwise ();
 			currentStir = -1;
 		}
 	}
@@ -252,6 +253,20 @@ public class Cauldron : MonoBehaviour {
 	bool IsCounterClockwise(int current, int last)
 	{
 		return (current == 0 && last == 1) || (current == 2 && last == 0) || (current == 1 && last == 2);
+	}
+
+	public float heat;
+	public void AddHeat()
+	{
+		heat += heatIncreasePerStick;
+	}
+	public float heatDecay = 1;
+	public float heatIncreasePerStick = 15;
+	IEnumerator HeatLoop()
+	{
+		heat = heat - (Time.deltaTime * heatDecay);
+		if (heat < 0)
+			heat = 0;
 	}
 
 }

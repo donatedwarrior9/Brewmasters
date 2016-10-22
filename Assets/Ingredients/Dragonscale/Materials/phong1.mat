@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: screwthis
-  m_Shader: {fileID: 4800000, guid: 3954501323f24464f9e4418c78d8e8ce, type: 3}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 1
+  m_Name: phong1
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
   m_CustomRenderQueue: -1
   stringTagMap: {}
   m_SavedProperties:
@@ -18,7 +18,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: a53cf5449d11a15d1100a04b44295342, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 05590d69400a4984eb11ee9346a95462, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -66,8 +66,8 @@ Material:
     - first:
         name: _ParallaxMap
       second:
-        m_Texture: {fileID: 2800000, guid: 830884c18cf5e7a4895ee02c2dcd8e12, type: 3}
-        m_Scale: {x: 5, y: 5}
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
@@ -82,9 +82,6 @@ Material:
     - first:
         name: _DstBlend
       second: 0
-    - first:
-        name: _EdgeLength
-      second: 42.5
     - first:
         name: _GlossMapScale
       second: 1
@@ -105,13 +102,7 @@ Material:
       second: 1
     - first:
         name: _Parallax
-      second: 0.265
-    - first:
-        name: _Shininess
-      second: 0.127
-    - first:
-        name: _Smoothness
-      second: 0.275
+      second: 0.02
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -130,10 +121,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 0.32866406, g: 0, b: 0, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
-    - first:
-        name: _SpecColor
-      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
