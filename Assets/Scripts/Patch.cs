@@ -8,10 +8,16 @@ public class Patch : MonoBehaviour {
 	public float growRadius = 0.1f;
 	public void PlantSeed(GameObject seed)
 	{
-		Destroy (seed);
-		Invoke("Grow", minimumSpawnTime + Random.Range(minimumSpawnTime / 2, minimumSpawnTime * 1.5f));
+        prefabToSpawn = seed.GetComponent<Seed>().getPrefabToSpawn();
+        Destroy (seed);
+        //Invoke("Grow", minimumSpawnTime + Random.Range(minimumSpawnTime / 2, minimumSpawnTime * 1.5f));
+        StartCoroutine(delayedGrow(minimumSpawnTime + Random.Range(minimumSpawnTime / 2, minimumSpawnTime * 1.5f), prefabToSpawn));
 	}
-
+    IEnumerator delayedGrow(float delay, GameObject toSpawn)
+    {
+        yield return new WaitForSeconds(delay);
+        Grow();
+    }
 	void Grow()
 	{
 		int randomNumToSpawn = Random.Range (1, 5);
@@ -26,7 +32,7 @@ public class Patch : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		// If not a seed, return
-		if ("other" != "seed") {
+		if (other.GetComponent<Seed>() == null) {
 			return;
 		}
 		PlantSeed (other.gameObject);
