@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: 950854b0e5850734db12d3c0e448f52b
-timeCreated: 1467286816
-licenseType: Store
+guid: 89be0faa961ffa248b79747a4a6d5c0e
+timeCreated: 1477157116
+licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: beam
-    100002: beam_in
-    100004: //RootNode
-    400000: beam
-    400002: beam_in
-    400004: //RootNode
-    2300000: beam
-    2300002: beam_in
-    3300000: beam
-    3300002: beam_in
-    4300000: beam
-    4300002: beam_in
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: goldcoin
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -75,7 +69,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
