@@ -37,10 +37,11 @@ public class EncounterArea : MonoBehaviour {
 	public void EnteredTrap(Skeleton enemy)
 	{
 		anni.SetTrigger ("closeTrigger");
-        Vector3 rand = new Vector3((-.987f + Random.Range(0, .35f)), 1.307f, (.095f + Random.Range(0, .35f)));
         int random = Mathf.RoundToInt(Random.Range(2, 5));
-        for (int i = 0; i<random;i++)
-            Instantiate(enemy.myRewardPrefab[i], rand, Quaternion.identity);
-	}
-
+        for (int i = 0; i < random; i++)
+        {
+            Vector3 rand = new Vector3((-.987f + Random.Range(0, .35f)), 1.457f, (.095f + Random.Range(0, .35f)));
+            Instantiate(enemy.myRewardPrefab[i], rand, Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)));
+        }
+    }
 }
