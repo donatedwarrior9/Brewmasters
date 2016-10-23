@@ -6,9 +6,15 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: persp1
+    100004: vial
     400000: //RootNode
+    400002: persp1
+    400004: vial
     2300000: //RootNode
+    2300002: vial
     3300000: //RootNode
+    3300002: vial
     4300000: vial
     9500000: //RootNode
   materials:
