@@ -25,9 +25,7 @@ namespace VRTK
     /// The purpose of the Headset Collision is to detect when the user's VR headset collides with another game object.
     /// </summary>
     /// <remarks>
-    ///   > **Unity Version Information**
-    ///   > * If using `Unity 5.3` or older then the Headset Collision script is attached to the `Camera(head)` object within the `[CameraRig]` prefab.
-    ///   > * If using `Unity 5.4` or newer then the Headset Collision script is attached to the `Camera(eye)` object within the `[CameraRig]->Camera(head)` prefab.
+    /// The Headset Collision script is added to the `[CameraRig]` prefab. It will automatically create a script on the headset to deal with the collision events.
     /// </remarks>
     /// <example>
     /// `VRTK/Examples/011_Camera_HeadSetCollisionFading` has collidable walls around the play area and if the user puts their head into any of the walls then the headset will fade to black.
@@ -48,7 +46,21 @@ namespace VRTK
         /// </summary>
         public event HeadsetCollisionEventHandler HeadsetCollisionEnded;
 
-        private bool headsetColliding = false;
+        /// <summary>
+        /// Determines if the headset is currently colliding with another object.
+        /// </summary>
+        [HideInInspector]
+        public bool headsetColliding = false;
+        /// <summary>
+        /// Stores the collider of what the headset is colliding with.
+        /// </summary>
+        [HideInInspector]
+        public Collider collidingWith = null;
+
+        private Transform headset;
+        private VRTK_HeadsetCollider headsetColliderScript;
+        private bool generateCollider = false;
+        private bool generateRigidbody = false;
 
         public virtual void OnHeadsetCollisionDetect(HeadsetCollisionEventArgs e)
         {
@@ -78,24 +90,90 @@ namespace VRTK
         private void OnEnable()
         {
             VRTK_ObjectCache.registeredHeadsetCollider = this;
+            headset = VRTK_DeviceFinder.HeadsetTransform();
             headsetColliding = false;
-            Utilities.SetPlayerObject(gameObject, VRTK_PlayerObject.ObjectTypes.Headset);
-
-            BoxCollider collider = gameObject.AddComponent<BoxCollider>();
-            collider.isTrigger = true;
-            collider.size = new Vector3(0.1f, 0.1f, 0.1f);
-
-            Rigidbody rb = gameObject.AddComponent<Rigidbody>();
-            rb.isKinematic = true;
-            rb.useGravity = false;
+            Utilities.SetPlayerObject(headset.gameObject, VRTK_PlayerObject.ObjectTypes.Headset);
+            SetupHeadset();
         }
 
         private void OnDisable()
         {
+            headsetColliderScript.EndCollision(collidingWith);
             VRTK_ObjectCache.registeredHeadsetCollider = null;
-            headsetColliding = false;
-            Destroy(gameObject.GetComponent<BoxCollider>());
-            Destroy(gameObject.GetComponent<Rigidbody>());
+            TearDownHeadset();
+        }
+
+        private void SetupHeadset()
+        {
+            var headsetCollider = headset.GetComponent<Collider>();
+            if (!headsetCollider)
+            {
+                var newCollider = headset.gameObject.AddComponent<BoxCollider>();
+                newCollider.size = new Vector3(0.1f, 0.1f, 0.1f);
+                headsetCollider = newCollider;
+                generateCollider = true;
+            }
+            headsetCollider.isTrigger = true;
+
+            var headsetRigidbody = headset.GetComponent<Rigidbody>();
+            if (!headsetRigidbody)
+            {
+                headsetRigidbody = headset.gameObject.AddComponent<Rigidbody>();
+                generateRigidbody = true;
+            }
+            headsetRigidbody.isKinematic = true;
+            headsetRigidbody.useGravity = false;
+
+            if (!headsetColliderScript)
+            {
+                headsetColliderScript = headset.gameObject.AddComponent<VRTK_HeadsetCollider>();
+                headsetColliderScript.SetParent(gameObject);
+                headsetColliderScript.SetIgnoreTarget(ignoreTargetWithTagOrClass, targetTagOrScriptListPolicy);
+            }
+        }
+
+        private void TearDownHeadset()
+        {
+            if (generateCollider)
+            {
+                Destroy(headset.gameObject.GetComponent<BoxCollider>());
+            }
+            if (generateRigidbody)
+            {
+                Destroy(headset.gameObject.GetComponent<Rigidbody>());
+            }
+            if (headsetColliderScript)
+            {
+                Destroy(headsetColliderScript);
+            }
+        }
+    }
+
+    public class VRTK_HeadsetCollider : MonoBehaviour
+    {
+        private VRTK_HeadsetCollision parent;
+        private string ignoreTargetWithTagOrClass;
+        private VRTK_TagOrScriptPolicyList targetTagOrScriptListPolicy;
+
+        public void SetParent(GameObject setParent)
+        {
+            parent = setParent.GetComponent<VRTK_HeadsetCollision>();
+        }
+
+        public void SetIgnoreTarget(string ignore, VRTK_TagOrScriptPolicyList list = null)
+        {
+            ignoreTargetWithTagOrClass = ignore;
+            targetTagOrScriptListPolicy = list;
+        }
+
+        public void EndCollision(Collider collider)
+        {
+            if (!collider || !collider.GetComponent<VRTK_PlayerObject>())
+            {
+                parent.headsetColliding = false;
+                parent.collidingWith = null;
+                parent.OnHeadsetCollisionEnded(SetHeadsetCollisionEvent(collider, transform));
+            }
         }
 
         private HeadsetCollisionEventArgs SetHeadsetCollisionEvent(Collider collider, Transform currentTransform)
@@ -115,17 +193,22 @@ namespace VRTK
         {
             if (enabled && !collider.GetComponent<VRTK_PlayerObject>() && ValidTarget(collider.transform))
             {
-                headsetColliding = true;
-                OnHeadsetCollisionDetect(SetHeadsetCollisionEvent(collider, transform));
+                parent.headsetColliding = true;
+                parent.collidingWith = collider;
+                parent.OnHeadsetCollisionDetect(SetHeadsetCollisionEvent(collider, transform));
             }
         }
 
         private void OnTriggerExit(Collider collider)
         {
-            if (!collider.GetComponent<VRTK_PlayerObject>())
+            EndCollision(collider);
+        }
+
+        private void Update()
+        {
+            if (parent.headsetColliding && (!parent.collidingWith || !parent.collidingWith.gameObject.activeInHierarchy))
             {
-                headsetColliding = false;
-                OnHeadsetCollisionEnded(SetHeadsetCollisionEvent(collider, transform));
+                EndCollision(parent.collidingWith);
             }
         }
     }

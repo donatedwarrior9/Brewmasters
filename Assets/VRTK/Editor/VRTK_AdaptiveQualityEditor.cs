@@ -1,3 +1,4 @@
+#if (UNITY_5_4_OR_NEWER)
 namespace VRTK
 {
     using System;
@@ -27,7 +28,7 @@ namespace VRTK
             serializedObject.Update();
 
             var adaptiveQuality = (VRTK_AdaptiveQuality)target;
-            if (adaptiveQuality.GetComponent<SteamVR_Camera>() == null)
+            if (VRTK_SDK_Bridge.GetHeadsetCamera() == null)
             {
                 EditorGUILayout.HelpBox(NoSteamVR_CameraFoundHelpBoxText, MessageType.Error);
                 return;
@@ -128,3 +129,4 @@ namespace VRTK
         }
     }
 }
+#endif

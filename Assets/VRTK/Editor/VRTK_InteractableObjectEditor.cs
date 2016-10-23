@@ -5,7 +5,7 @@
     using System;
     using System.Collections.Generic;
 
-    [CustomEditor(typeof(VRTK_InteractableObject), true)]
+    [CustomEditor(typeof(VRTK_InteractableObject), true), CanEditMultipleObjects]
     public class VRTK_InteractableObjectEditor : Editor
     {
         private bool viewTouch = true;
@@ -80,7 +80,7 @@
                 {
                     EditorGUI.indentLevel++;
 
-                    EditorGUILayout.PropertyField(serializedObject.FindProperty("isDroppable"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("validDrop"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("isSwappable"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("holdButtonToGrab"));
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("grabOverrideButton"));

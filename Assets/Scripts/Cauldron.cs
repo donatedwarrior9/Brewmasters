@@ -8,6 +8,7 @@ public class Cauldron : MonoBehaviour {
 	void Start () {
 		StartCoroutine (ColorLoop ());
 		StartCoroutine (HeatLoop ());
+		StartCoroutine (StirLoop ());
 	}
 
 	// Update is called once per frame
@@ -216,24 +217,37 @@ public class Cauldron : MonoBehaviour {
 		RecipieFailed ();
 	}
 
+	public GameObject victoryEffectsPrefab;
 	void RecipiePassed()
 	{
 		Debug.Log ("YOU PASS!");
+		Instantiate (victoryEffectsPrefab, cauldronSurfaceRenderer.transform.position, Quaternion.identity);
 	}
 
+	public GameObject failEffectsPrefab;
 	void RecipieFailed()
 	{
 		Debug.Log ("YOU FAIL!");
+		Instantiate (failEffectsPrefab, cauldronSurfaceRenderer.transform.position, Quaternion.identity);
+
 	}
 
 	int currentStir = -1;
 	int lastStir = -1;
 	int lastLastStir = -1;
+	float smoothTurning = 0;
+	float desiredTurning = 0;
+	public float stirRotationChange = 30;
 	public void Stirred(int colliderIndex)
 	{
 		lastLastStir = lastStir;
 		lastStir = currentStir;
 		currentStir = colliderIndex;
+		if (IsClockwise(currentStir, lastStir))
+			desiredTurning += stirRotationChange;
+		else if (IsCounterClockwise(currentStir, lastStir))
+			desiredTurning -= stirRotationChange;
+
 
 		if (IsClockwise (currentStir, lastStir) && IsClockwise (lastStir, lastLastStir) && IsClockwise (lastLastStir, currentStir)) {
 			StirClockWise ();
@@ -242,6 +256,17 @@ public class Cauldron : MonoBehaviour {
 		if (IsCounterClockwise (currentStir, lastStir) && IsCounterClockwise (lastStir, lastLastStir) && IsCounterClockwise (lastLastStir, currentStir)) {
 			StirCounterClockwise ();
 			currentStir = -1;
+		}
+	}
+	public float stirRotationResetRate = 5;
+	public VRTK.Examples.AutoRotation liquidRotation;
+	IEnumerator StirLoop()
+	{
+		while (true) {
+			desiredTurning = Mathf.MoveTowards (desiredTurning, 0, Time.deltaTime * stirRotationResetRate);
+			smoothTurning = Mathf.Lerp (smoothTurning, desiredTurning, Time.deltaTime * 8);
+			liquidRotation.degPerSec = smoothTurning;
+			yield return null;
 		}
 	}
 
@@ -269,6 +294,20 @@ public class Cauldron : MonoBehaviour {
 				heat = 0;
 			yield return null;
 		}
+	}
+
+	public void SelectBook(Book book)
+	{
+		StartRecipie (book.recipie);
+	}
+
+	public void DeselectBook()
+	{
+		// Aborts this recipie. Gives you back your ingredients? Does nothing?
+		if (currentStep > 1)
+			RecipieFailed ();
+		currentRecipie = null;
+		currentStep = 0;
 	}
 
 }

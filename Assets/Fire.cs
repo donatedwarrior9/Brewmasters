@@ -51,10 +51,13 @@ public class Fire : MonoBehaviour {
 		steamSystem.startColor = Cauldron.smoothedColor;
 		splashingsystem.startColor = Cauldron.smoothedColor;
 	}
-
+	public GameObject stickIgniteEffectPrefab;
 	void OnTriggerEnter(Collider other)
 	{
-		// If it is a stick
-		cauldron.AddHeat();
+		if (other.tag == "Stick") {
+			Instantiate (stickIgniteEffectPrefab, other.transform.position, Quaternion.identity);
+			Destroy (other.gameObject);
+			cauldron.AddHeat ();
+		}
 	}
 }

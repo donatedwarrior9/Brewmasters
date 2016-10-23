@@ -149,7 +149,7 @@ namespace VRTK
         {
             if (undroppableGrabbedObject)
             {
-                if (undroppableGrabbedObject.GetComponent<VRTK_InteractableObject>().isDroppable)
+                if (undroppableGrabbedObject.GetComponent<VRTK_InteractableObject>().IsDroppable())
                 {
                     undroppableGrabbedObject = null;
                 }
@@ -169,7 +169,7 @@ namespace VRTK
             if (controllerAttachPoint == null)
             {
                 //attempt to find the attach point on the controller
-                var defaultAttachPoint = transform.Find(VRTK_SDK_Bridge.defaultAttachPointPath);
+                var defaultAttachPoint = transform.Find(VRTK_SDK_Bridge.GetControllerElementPath(SDK_Base.ControllerElelements.AttachPoint, VRTK_DeviceFinder.GetControllerHand(gameObject)));
                 if (defaultAttachPoint != null)
                 {
                     controllerAttachPoint = defaultAttachPoint.GetComponent<Rigidbody>();
@@ -275,7 +275,7 @@ namespace VRTK
                 }
                 controllerAttachJoint = tempSpringJoint;
             }
-            controllerAttachJoint.breakForce = (objectScript.isDroppable ? objectScript.detachThreshold : Mathf.Infinity);
+            controllerAttachJoint.breakForce = (objectScript.IsDroppable() ? objectScript.detachThreshold : Mathf.Infinity);
             controllerAttachJoint.connectedBody = controllerAttachPoint;
         }
 
@@ -323,7 +323,7 @@ namespace VRTK
 
             if (origin != null)
             {
-                rb.velocity = origin.TransformDirection(velocity) * (throwMultiplier * objectThrowMultiplier);
+                rb.velocity = origin.TransformVector(velocity) * (throwMultiplier * objectThrowMultiplier);
                 rb.angularVelocity = origin.TransformDirection(angularVelocity);
             }
             else
@@ -513,7 +513,7 @@ namespace VRTK
                     initialGrabAttempt = GrabInteractedObject();
                 }
 
-                undroppableGrabbedObject = (grabbedObject && grabbedObject.GetComponent<VRTK_InteractableObject>() && !grabbedObject.GetComponent<VRTK_InteractableObject>().isDroppable ? grabbedObject : null);
+                undroppableGrabbedObject = (grabbedObject && grabbedObject.GetComponent<VRTK_InteractableObject>() && !grabbedObject.GetComponent<VRTK_InteractableObject>().IsDroppable() ? grabbedObject : null);
 
                 if (grabbedObject && initialGrabAttempt)
                 {
@@ -532,7 +532,7 @@ namespace VRTK
 
         private bool CanRelease()
         {
-            return (grabbedObject && grabbedObject.GetComponent<VRTK_InteractableObject>().isDroppable);
+            return (grabbedObject && grabbedObject.GetComponent<VRTK_InteractableObject>().IsDroppable());
         }
 
         private void AttemptReleaseObject()
@@ -573,7 +573,7 @@ namespace VRTK
 
             if (createRigidBodyWhenNotTouching && grabbedObject == null)
             {
-                if (interactTouch.IsRigidBodyActive() != controllerEvents.grabPressed)
+                if (!interactTouch.IsRigidBodyForcedActive() && interactTouch.IsRigidBodyActive() != controllerEvents.grabPressed)
                 {
                     interactTouch.ToggleControllerRigidBody(controllerEvents.grabPressed);
                 }

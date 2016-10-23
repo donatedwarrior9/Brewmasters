@@ -2,6 +2,7 @@
 namespace VRTK.Highlighters
 {
     using UnityEngine;
+    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -32,11 +33,22 @@ namespace VRTK.Highlighters
         /// <param name="options">A dictionary array containing the highlighter options:\r     * `&lt;'thickness', float&gt;` - Same as `thickness` inspector parameter.\r     * `&lt;'customOutlineModel', GameObject&gt;` - Same as `customOutlineModel` inspector parameter.\r     * `&lt;'customOutlineModelPath', string&gt;` - Same as `customOutlineModelPath` inspector parameter.</param>
         public override void Initialise(Color? color = null, Dictionary<string, object> options = null)
         {
+            usesClonedObject = true;
+
             if (stencilOutline == null)
             {
                 stencilOutline = Instantiate((Material)Resources.Load("OutlineBasic"));
             }
             SetOptions(options);
+            ResetHighlighter();
+        }
+
+        /// <summary>
+        /// The ResetHighlighter method creates the additional model to use as the outline highlighted object.
+        /// </summary>
+        public override void ResetHighlighter()
+        {
+            DeleteExistingHighlightModels();
             CreateHighlightModel();
         }
 
@@ -96,6 +108,18 @@ namespace VRTK.Highlighters
             }
         }
 
+        private void DeleteExistingHighlightModels()
+        {
+            var existingHighlighterObjects = GetComponentsInChildren<VRTK_PlayerObject>(true);
+            for (int i = 0; i < existingHighlighterObjects.Length; i++)
+            {
+                if (existingHighlighterObjects[i].objectType == VRTK_PlayerObject.ObjectTypes.Highlighter)
+                {
+                    Destroy(existingHighlighterObjects[i].gameObject);
+                }
+            }
+        }
+
         private void CreateHighlightModel()
         {
             if (customOutlineModel != null)
@@ -121,14 +145,14 @@ namespace VRTK.Highlighters
             }
 
             highlightModel = new GameObject(name + "_HighlightModel");
-            highlightModel.transform.position = transform.position;
-            highlightModel.transform.rotation = transform.rotation;
-            highlightModel.transform.localScale = transform.localScale;
+            highlightModel.transform.position = copyModel.transform.position;
+            highlightModel.transform.rotation = copyModel.transform.rotation;
+            highlightModel.transform.localScale = copyModel.transform.localScale;
             highlightModel.transform.SetParent(transform);
 
             foreach (var component in copyModel.GetComponents<Component>())
             {
-                if (System.Array.IndexOf(copyComponents, component.GetType().ToString()) >= 0)
+                if (Array.IndexOf(copyComponents, component.GetType().ToString()) >= 0)
                 {
                     Utilities.CloneComponent(component, highlightModel);
                 }
@@ -138,6 +162,8 @@ namespace VRTK.Highlighters
             highlightModel.GetComponent<MeshFilter>().mesh = copyMesh.mesh;
             highlightModel.GetComponent<Renderer>().material = stencilOutline;
             highlightModel.SetActive(false);
+
+            Utilities.SetPlayerObject(highlightModel, VRTK_PlayerObject.ObjectTypes.Highlighter);
         }
     }
 }
