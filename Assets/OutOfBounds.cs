@@ -6,7 +6,7 @@ public class OutOfBounds : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		Rigidbody otherRigidbody = other.GetComponentInParent<Rigidbody>();
-		if (otherRigidbody)
+		if (otherRigidbody && otherRigidbody.gameObject)
 			respawnManager.Respawn (otherRigidbody.gameObject);
 	}
 }
