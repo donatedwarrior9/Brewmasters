@@ -120,9 +120,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootToReturn:
-  - {fileID: 1000010863316236, guid: d12f8bd590faa5c4fb3d7494d667d2b4, type: 2}
-  - {fileID: 1000010863316236, guid: 5ffc6e7f276391a439105b1d043626d9, type: 2}
-  - {fileID: 1000010863316236, guid: 8bca1e0a6c2a25245a9955f1fefc897c, type: 2}
+  - {fileID: 1000010363223772, guid: 19d53915fed2866448a11a6440b99bfa, type: 2}
+  - {fileID: 1000010363223772, guid: 19d53915fed2866448a11a6440b99bfa, type: 2}
+  - {fileID: 1000011301646284, guid: f7f89915bdfd8ef428a8411957baffaf, type: 2}
+  - {fileID: 1000010363223772, guid: 19d53915fed2866448a11a6440b99bfa, type: 2}
+  - {fileID: 1000011301646284, guid: f7f89915bdfd8ef428a8411957baffaf, type: 2}
+  - {fileID: 1000010561504508, guid: 75bda5e4ffc627d4baaee4c9054f0de7, type: 2}
+  - {fileID: 1000010561504508, guid: 75bda5e4ffc627d4baaee4c9054f0de7, type: 2}
 --- !u!114 &114000013331754580
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,7 +26,7 @@ GameObject:
   - 54: {fileID: 54000010690712428}
   - 135: {fileID: 135000011158291652}
   m_Layer: 0
-  m_Name: level 1 lure potion
+  m_Name: level 3 lure potion 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,13 +125,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lureType: 0
-  prefabToSpawn0: {fileID: 1000011045785004, guid: d6e92f955c24f894a862ed9eb745277e,
+  prefabToSpawn0: {fileID: 1000013935314936, guid: c6e4b467d4f32b044b8960c6cfa94d58,
     type: 2}
-  prefabToSpawn1: {fileID: 1000011045785004, guid: d6e92f955c24f894a862ed9eb745277e,
+  prefabToSpawn1: {fileID: 1000013935314936, guid: c6e4b467d4f32b044b8960c6cfa94d58,
     type: 2}
-  prefabToSpawn2: {fileID: 1000011045785004, guid: d6e92f955c24f894a862ed9eb745277e,
+  prefabToSpawn2: {fileID: 1000013935314936, guid: c6e4b467d4f32b044b8960c6cfa94d58,
     type: 2}
-  prefabToSpawn3: {fileID: 1000011045785004, guid: d6e92f955c24f894a862ed9eb745277e,
+  prefabToSpawn3: {fileID: 1000013935314936, guid: c6e4b467d4f32b044b8960c6cfa94d58,
     type: 2}
 --- !u!135 &135000011158291652
 SphereCollider:

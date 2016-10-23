@@ -1589,6 +1589,8 @@ MonoBehaviour:
   MonsterType: 1
   myRewardPrefab:
   - {fileID: 1000010483572222, guid: 4b854cde89c035e4d91b0bed7cb14ddc, type: 2}
+  - {fileID: 1000010561504508, guid: 75bda5e4ffc627d4baaee4c9054f0de7, type: 2}
+  - {fileID: 1000010561504508, guid: 75bda5e4ffc627d4baaee4c9054f0de7, type: 2}
   deatheffectsPrefab: {fileID: 1000012363610706, guid: 9b8d5c058ff8f174fa1d9a9d627317e6,
     type: 2}
 --- !u!135 &135000012958312064

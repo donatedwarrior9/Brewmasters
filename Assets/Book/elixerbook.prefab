@@ -106,7 +106,7 @@ GameObject:
   - 54: {fileID: 54000012001279018}
   - 114: {fileID: 114000012872900786}
   m_Layer: 0
-  m_Name: Book
+  m_Name: elixerbook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,7 +637,10 @@ MonoBehaviour:
       - ingredient: 0
         value: 1
       maxStepTime: 0
+      minHeat: 0
+      maxHeat: 100
     finalColor: {r: 1, g: 0, b: 0.93103456, a: 1}
+    resultPotionPrefab: {fileID: 0}
 --- !u!114 &114000014245511102
 MonoBehaviour:
   m_ObjectHideFlags: 1
