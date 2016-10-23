@@ -23,8 +23,8 @@ GameObject:
   - 23: {fileID: 23000010237308260}
   - 95: {fileID: 95000013363868214}
   - 54: {fileID: 54000011058039066}
-  - 135: {fileID: 135000010015869292}
   - 114: {fileID: 114000010911285480}
+  - 65: {fileID: 65000010688264406}
   m_Layer: 0
   m_Name: pumpkinhead
   m_TagString: Untagged
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013548790632}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8157, y: 1.4633, z: 0.44}
+  m_LocalPosition: {x: -0.68, y: 1.4633, z: 0.502}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -98,6 +98,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65000010688264406
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013548790632}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.031118328, y: 0.023900261, z: 0.0274953}
+  m_Center: {x: 0.00029919148, y: -0.001499343, z: -0.000013709068}
 --- !u!95 &95000013363868214
 Animator:
   serializedVersion: 3
@@ -158,15 +170,3 @@ MonoBehaviour:
   allowedUseControllers: 0
   hideControllerOnUse: 0
   usingState: 0
---- !u!135 &135000010015869292
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013548790632}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.017905086
-  m_Center: {x: 0, y: 0, z: 0}
