@@ -10,6 +10,7 @@ public class Skeleton : MonoBehaviour {
 		myanimator = GetComponent<Animator> ();
 		myagent = GetComponent<NavMeshAgent> ();
 		myagent.destination = FindObjectOfType<EncounterArea> ().transform.position;
+		yield return new WaitForSeconds (1);
 		while (myagent.remainingDistance > 0.5f) {
 			myanimator.SetFloat ("forward", myagent.desiredVelocity.magnitude);
 			yield return null;

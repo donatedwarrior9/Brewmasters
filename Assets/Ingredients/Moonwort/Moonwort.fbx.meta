@@ -6,9 +6,15 @@ ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
+    100002: back1
+    100004: moonwort
     400000: //RootNode
+    400002: back1
+    400004: moonwort
     2300000: //RootNode
+    2300002: moonwort
     3300000: //RootNode
+    3300002: moonwort
     4300000: moonwort
     9500000: //RootNode
   materials:
