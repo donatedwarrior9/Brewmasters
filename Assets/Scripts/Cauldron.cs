@@ -323,7 +323,7 @@ public class Cauldron : MonoBehaviour {
 	public float heat;
 	public void AddHeat()
 	{
-		heat = Mathf.Clamp(heat + heatIncreasePerStick, 0, 110);
+		heat = Mathf.Clamp(heat + heatIncreasePerStick, 0, 100);
 	}
 	public float heatDecay = 1;
 	public float heatIncreasePerStick = 15;

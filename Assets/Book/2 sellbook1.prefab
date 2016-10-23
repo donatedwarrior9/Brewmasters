@@ -106,7 +106,7 @@ GameObject:
   - 54: {fileID: 54000012001279018}
   - 114: {fileID: 114000012872900786}
   m_Layer: 0
-  m_Name: lurebook3
+  m_Name: 2 sellbook1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,10 +233,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011511362526}
-  m_LocalRotation: {x: -0.5245005, y: 0.21165761, z: 0.13649766, w: 0.8133073}
-  m_LocalPosition: {x: 0.218, y: 1.567, z: -0.102}
+  m_LocalRotation: {x: -0.5133364, y: -0.23149866, z: -0.12578472, w: 0.816745}
+  m_LocalPosition: {x: -0.902, y: 0.951, z: -0.205}
   m_LocalScale: {x: 62.373352, y: 62.373394, z: 62.373394}
-  m_LocalEulerAnglesHint: {x: -65.616005, y: 29.157001, z: 0}
+  m_LocalEulerAnglesHint: {x: -63.718002, y: -34.43, z: 4.0540004}
   m_Children:
   - {fileID: 4000011708806006}
   - {fileID: 4000010939436880}
@@ -414,7 +414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mysterious Potion A
+  m_Text: Zombie Stew
 --- !u!114 &114000010137125778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -447,7 +447,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mysterious Potion A
+  m_Text: Zombie Stew
 --- !u!114 &114000010153638664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -495,17 +495,21 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 105
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1 Crimson Nirnroot
+  m_Text: 'Add 3 red mushrooms
 
-    Stir thrice clockwise
 
-    4 eyes of newt'
+    Quickly add 1 severed zombie hand
+
+    (within 7 seconds)
+
+
+    Finally, add 1 green apple'
 --- !u!114 &114000010996048218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -575,7 +579,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Recipe Page 1
+  m_Text: This ghastly gruel will yield many coins when given to the hooded merchant.
 --- !u!114 &114000012872900786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,16 +635,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipie:
-    name: 
+    name: Zombie Stew
     steps:
     - requiredIngredients:
-      - ingredient: 0
+      - ingredient: 6
+        value: 3
+      maxStepTime: 0
+      minHeat: 0
+      maxHeat: 100
+    - requiredIngredients:
+      - ingredient: 8
+        value: 1
+      maxStepTime: 7
+      minHeat: 0
+      maxHeat: 100
+    - requiredIngredients:
+      - ingredient: 2
         value: 1
       maxStepTime: 0
       minHeat: 0
       maxHeat: 100
-    finalColor: {r: 1, g: 0, b: 0.93103456, a: 1}
-    resultPotionPrefab: {fileID: 0}
+    finalColor: {r: 0.19429414, g: 0.2873469, b: 0.734, a: 1}
+    resultPotionPrefab: {fileID: 1000010831847398, guid: b5a861b7872a6a342bb4ac9a84d10891,
+      type: 2}
 --- !u!114 &114000014245511102
 MonoBehaviour:
   m_ObjectHideFlags: 1

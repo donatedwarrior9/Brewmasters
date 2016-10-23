@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootToReturn:
-  - {fileID: 1000011851875620, guid: 0930cc8504a1d734a8c863fa62238dbc, type: 2}
+  - {fileID: 1000011511362526, guid: 615abcbabb09dd94f9ac0c6188f96f94, type: 2}
   - {fileID: 1000010363223772, guid: ab6b55915bb8b3b488bd1e2f92b9dce6, type: 2}
   - {fileID: 1000010363223772, guid: ab6b55915bb8b3b488bd1e2f92b9dce6, type: 2}
   - {fileID: 1000010363223772, guid: ab6b55915bb8b3b488bd1e2f92b9dce6, type: 2}
