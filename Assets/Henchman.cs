@@ -47,8 +47,10 @@ public class Henchman : MonoBehaviour {
 			yield return null;
 		myAnimator.SetTrigger ("place");
 		yield return new WaitForSeconds (0.5f);
+		RespawnManager respawner = FindObjectOfType<RespawnManager> ();
 		foreach (GameObject rewardPrefab in potion.lootToReturn) {
-			Instantiate (rewardPrefab, travelToPosition.position + Vector3.up, Quaternion.identity); 
+			GameObject spawned = (GameObject) Instantiate (rewardPrefab, travelToPosition.position + Vector3.up, Quaternion.identity); 
+			respawner.Respawn (spawned);
 		}
 		Destroy (potion.gameObject);
 	}
