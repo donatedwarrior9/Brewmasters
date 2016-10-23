@@ -137,7 +137,7 @@ MonoBehaviour:
   allowedTouchControllers: 0
   hideControllerOnTouch: 0
   isGrabbable: 1
-  isDroppable: 1
+  validDrop: 1
   isSwappable: 1
   holdButtonToGrab: 1
   grabOverrideButton: 8
