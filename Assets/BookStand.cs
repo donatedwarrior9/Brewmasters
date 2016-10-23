@@ -18,6 +18,9 @@ public class BookStand : MonoBehaviour {
 		//book.Place (bookPoint);
 	}
 
+	public AudioSource bookOpenSound;
+	public AudioSource bookCloseSound;
+
 	Book ClosestBook()
 	{
 		float closestDist = 9999;
@@ -37,6 +40,7 @@ public class BookStand : MonoBehaviour {
 		Book closestbook = ClosestBook ();
 		cauldron.SelectBook (closestbook);
 		closestbook.Open ();
+		bookOpenSound.Play ();
 	}
 
 	public void OnObjectUnSnapped()
@@ -45,6 +49,7 @@ public class BookStand : MonoBehaviour {
 		cauldron.DeselectBook ();
 		Book closestbook = ClosestBook ();
 		closestbook.Close ();
+		bookCloseSound.Play ();
 		closestbook.GetComponent<Rigidbody> ().AddForce (Vector3.up * 1 + transform.up * 1, ForceMode.VelocityChange);
 	}
 
