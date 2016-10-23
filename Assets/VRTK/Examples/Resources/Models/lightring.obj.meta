@@ -1,30 +1,17 @@
 fileFormatVersion: 2
-guid: 9b6f29b49a33ec6498cce4272f62b1a3
-timeCreated: 1477153972
-licenseType: Free
+guid: 42da832a76eaae14b85df110b8ce28ce
+timeCreated: 1469087502
+licenseType: Store
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: book
-    100004: l1
-    100006: l2
-    100008: r1
-    100010: r2
-    100012: root
+    100002: TexturedDisk
     400000: //RootNode
-    400002: book
-    400004: l1
-    400006: l2
-    400008: r1
-    400010: r2
-    400012: root
-    2300000: book
-    3300000: book
-    4300000: book
-    7400000: Take 001
-    9500000: //RootNode
-    13700000: book
+    400002: TexturedDisk
+    2300000: TexturedDisk
+    3300000: TexturedDisk
+    4300000: TexturedDisk
   materials:
     importMaterials: 1
     materialName: 0
@@ -39,7 +26,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -83,7 +70,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

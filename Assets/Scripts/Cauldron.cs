@@ -187,10 +187,9 @@ public class Cauldron : MonoBehaviour {
 	public Light cauldronGlow;
 	public static Color desiredColor = Color.grey;
 	public float colorChangeSpeed = 3;
+	public static Color smoothedColor = Color.grey;
 	IEnumerator ColorLoop()
 	{
-
-		Color smoothedColor = Color.grey;
 		Material waterMaterial = cauldronSurfaceRenderer.material;
 		while (true) {
 			smoothedColor = Color.Lerp (smoothedColor, desiredColor, Time.deltaTime * colorChangeSpeed);
@@ -262,14 +261,14 @@ public class Cauldron : MonoBehaviour {
 	}
 	public float heatDecay = 1;
 	public float heatIncreasePerStick = 15;
-	public Fire fire;
 	IEnumerator HeatLoop()
 	{
-		heat = heat - (Time.deltaTime * heatDecay);
-		if (heat < 0)
-			heat = 0;
-		fire.SetHeat (heat);
-		yield return null;
+		while (true) {
+			heat = heat - (Time.deltaTime * heatDecay);
+			if (heat < 0)
+				heat = 0;
+			yield return null;
+		}
 	}
 
 }
