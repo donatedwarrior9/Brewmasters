@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class OutOfBounds : MonoBehaviour {
-
+	public RespawnManager respawnManager;
 	void OnTriggerEnter(Collider other)
 	{
-		// Something fell out of bounds
-
-		Debug.Log (other.gameObject.name);
+		Rigidbody otherRigidbody = other.GetComponentInParent<Rigidbody>();
+		if (otherRigidbody)
+			respawnManager.Respawn (otherRigidbody.gameObject);
 	}
 }

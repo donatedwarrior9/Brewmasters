@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 411e9a7c45db7e549a6cfcb541549a22
-timeCreated: 1477233216
+guid: 1083ed29cc5ed69458ebe034f676f56e
+timeCreated: 1477205032
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -8,8 +8,8 @@ ModelImporter:
     100000: chest
     100002: face
     100004: head
-    100006: //RootNode
-    100008: henchman
+    100006: henchman
+    100008: //RootNode
     100010: l_elbow
     100012: l_hand
     100014: l_hip
@@ -31,8 +31,8 @@ ModelImporter:
     400000: chest
     400002: face
     400004: head
-    400006: //RootNode
-    400008: henchman
+    400006: henchman
+    400008: //RootNode
     400010: l_elbow
     400012: l_hand
     400014: l_hip
@@ -52,10 +52,12 @@ ModelImporter:
     400042: r_wrist
     400044: root
     4300000: henchman
+    7400000: henchman idle
+    7400002: henchman reach
     9500000: //RootNode
     13700000: henchman
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
   animations:
@@ -64,7 +66,13 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
+    animationImportErrors: '
+
+      Imported file ''henchmanIDLE'' conversion failed: Required human bone ''Hips''
+      not found
+
+
+'
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
@@ -74,7 +82,155 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: henchman idle
+      takeName: Take 001
+      firstFrame: 36
+      lastFrame: 78
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: henchman
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/chest
+        weight: 1
+      - path: root/chest/neck
+        weight: 1
+      - path: root/chest/neck/face
+        weight: 1
+      - path: root/chest/neck/face/head
+        weight: 1
+      - path: root/chest/neck/l_sholdel
+        weight: 1
+      - path: root/chest/neck/l_sholdel/l_elbow
+        weight: 1
+      - path: root/chest/neck/l_sholdel/l_elbow/l_wlist
+        weight: 1
+      - path: root/chest/neck/l_sholdel/l_elbow/l_wlist/l_hand
+        weight: 1
+      - path: root/chest/neck/l_sholdel/l_elbow/l_wlist/l_thumb
+        weight: 1
+      - path: root/chest/neck/r_sholder
+        weight: 1
+      - path: root/chest/neck/r_sholder/r_elbow
+        weight: 1
+      - path: root/chest/neck/r_sholder/r_elbow/r_wrist
+        weight: 1
+      - path: root/chest/neck/r_sholder/r_elbow/r_wrist/r_hand
+        weight: 1
+      - path: root/chest/neck/r_sholder/r_elbow/r_wrist/r_thumb
+        weight: 1
+      - path: root/l_hip
+        weight: 1
+      - path: root/l_hip/r_knee
+        weight: 1
+      - path: root/l_hip/r_knee/r_foot
+        weight: 1
+      - path: root/r_hip
+        weight: 1
+      - path: root/r_hip/r_knee 1
+        weight: 1
+      - path: root/r_hip/r_knee 1/r_foot 1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
+    - serializedVersion: 16
+      name: henchman reach
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: henchman
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/chest
+        weight: 1
+      - path: root/chest/neck
+        weight: 1
+      - path: root/chest/neck/face
+        weight: 1
+      - path: root/chest/neck/face/head
+        weight: 1
+      - path: root/chest/neck/l_sholdel
+        weight: 1
+      - path: root/chest/neck/l_sholdel/l_elbow
+        weight: 1
+      - path: root/chest/neck/l_sholdel/l_elbow/l_wlist
+        weight: 1
+      - path: root/chest/neck/l_sholdel/l_elbow/l_wlist/l_hand
+        weight: 1
+      - path: root/chest/neck/l_sholdel/l_elbow/l_wlist/l_thumb
+        weight: 1
+      - path: root/chest/neck/r_sholder
+        weight: 1
+      - path: root/chest/neck/r_sholder/r_elbow
+        weight: 1
+      - path: root/chest/neck/r_sholder/r_elbow/r_wrist
+        weight: 1
+      - path: root/chest/neck/r_sholder/r_elbow/r_wrist/r_hand
+        weight: 1
+      - path: root/chest/neck/r_sholder/r_elbow/r_wrist/r_thumb
+        weight: 1
+      - path: root/l_hip
+        weight: 1
+      - path: root/l_hip/r_knee
+        weight: 1
+      - path: root/l_hip/r_knee/r_foot
+        weight: 1
+      - path: root/r_hip
+        weight: 1
+      - path: root/r_hip/r_knee 1
+        weight: 1
+      - path: root/r_hip/r_knee 1/r_foot 1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -98,7 +254,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     human:
     - boneName: root
@@ -354,7 +510,8 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 411e9a7c45db7e549a6cfcb541549a22,
+    type: 3}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
