@@ -26,7 +26,7 @@ GameObject:
   - 114: {fileID: 114000011890593564}
   - 114: {fileID: 114000010226157578}
   m_Layer: 0
-  m_Name: fingerroot
+  m_Name: moonwort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0ee8eec367762534c9df15943dbddcb6, type: 2}
+  - {fileID: 2100000, guid: a4313f2600f200e4c8b45595061d1d75, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd427dd83c8822243a88a737ad7f1334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seedType: 0
-  prefabToSpawn: {fileID: 1000010559528782, guid: 5ef7ff16bb31b0741a561a38e9327d77,
+  seedType: 1
+  prefabToSpawn: {fileID: 1000011492214678, guid: 3920a369dcc7f164aaa0bebf7bdba9f8,
     type: 2}
 --- !u!114 &114000011890593564
 MonoBehaviour:
