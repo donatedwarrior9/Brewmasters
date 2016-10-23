@@ -45,8 +45,14 @@ public class BookStand : MonoBehaviour {
 		cauldron.DeselectBook ();
 		Book closestbook = ClosestBook ();
 		closestbook.Close ();
+		closestbook.GetComponent<Rigidbody> ().AddForce (Vector3.up * 1 + transform.up * 1, ForceMode.VelocityChange);
 	}
 
 	public VRTK.VRTK_SnapDropZone snapZone;
+
+	public void UnequipBook()
+	{
+		snapZone.ForceUnsnap ();
+	}
 
 }

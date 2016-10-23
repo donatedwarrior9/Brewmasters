@@ -98,6 +98,14 @@ public class Cauldron : MonoBehaviour {
 			RecipieFailed();
 			return;
 		}
+		if (heat < GetCurrentStep ().minHeat) {
+			RecipieFailed();
+			return;
+		}
+		if (heat > GetCurrentStep ().maxHeat) {
+			RecipieFailed();
+			return;
+		}
 		// Add ingredient to the dictionary
 		bool addedAlready = false;
 		foreach (IngredientAmount addedIngredient in addedIngredientsThisStep) {
@@ -223,6 +231,11 @@ public class Cauldron : MonoBehaviour {
 	{
 		Debug.Log ("YOU PASS!");
 		Instantiate (victoryEffectsPrefab, cauldronSurfaceRenderer.transform.position, Quaternion.identity);
+		if (currentRecipie.resultPotionPrefab) {
+			RespawnManager respawner = FindObjectOfType<RespawnManager> ();
+			GameObject resultingPotion = (GameObject)Instantiate (currentRecipie.resultPotionPrefab, transform.position, transform.rotation);
+			respawner.Respawn (resultingPotion);
+		}
 		DeselectBook ();
 	}
 
@@ -302,9 +315,10 @@ public class Cauldron : MonoBehaviour {
 	{
 		StartRecipie (book.recipie);
 	}
-
+	public BookStand bookStand;
 	public void DeselectBook()
 	{
+		bookStand.UnequipBook ();
 		currentRecipie = null;
 		currentStep = 0;
 	}
@@ -315,6 +329,7 @@ public class Recipie {
 	public string name;
 	public RecipieStep[] steps;
 	public Color finalColor;
+	public GameObject resultPotionPrefab;
 }
 
 [System.Serializable]
@@ -322,6 +337,8 @@ public class RecipieStep {
 	//public SerializableDictionary<Ingredient.IngredientType, int> requiredIngredients;
 	public List<IngredientAmount> requiredIngredients;
 	public float maxStepTime = 0;
+	public float minHeat = 0;
+	public float maxHeat = 100;
 }
 	
 [System.Serializable]

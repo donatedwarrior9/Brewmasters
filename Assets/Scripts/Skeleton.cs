@@ -10,6 +10,7 @@ public class Skeleton : MonoBehaviour {
 	public GameObject deatheffectsPrefab;
 	Animator myAnimator;
 	IEnumerator Start () {
+		SetAllKinematic (true);
 		myAnimator = GetComponent<Animator> ();
         myagent = GetComponent<NavMeshAgent> ();
 		myagent.destination = FindObjectOfType<EncounterArea> ().transform.position;
@@ -20,9 +21,15 @@ public class Skeleton : MonoBehaviour {
 		}
 		FindObjectOfType<EncounterArea> ().EnteredTrap(this);
 		myAnimator.enabled = false;
+		SetAllKinematic (false);
 		yield return new WaitForSeconds (3);
 		Instantiate (deatheffectsPrefab, transform.position, Quaternion.identity);
 		Destroy (gameObject);
 	}
 
+	void SetAllKinematic(bool toSet)
+	{
+		foreach (Rigidbody body in GetComponentsInChildren<Rigidbody>())
+			body.isKinematic = toSet;
+	}
 }
