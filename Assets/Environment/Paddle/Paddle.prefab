@@ -39,6 +39,7 @@ GameObject:
   - 65: {fileID: 65000011936642540}
   - 114: {fileID: 114000010922946022}
   - 54: {fileID: 54000011338100098}
+  - 114: {fileID: 114000011443309778}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Paddle
@@ -86,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 77b3936d702ae8549b49a2ca48156414, type: 2}
+  - {fileID: 2100000, guid: 3f834f9b53283334a9aaec1b5cca53e8, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -153,7 +154,7 @@ MonoBehaviour:
   allowedTouchControllers: 0
   hideControllerOnTouch: 0
   isGrabbable: 1
-  isDroppable: 1
+  validDrop: 1
   isSwappable: 1
   holdButtonToGrab: 1
   grabOverrideButton: 8
@@ -179,3 +180,14 @@ MonoBehaviour:
   allowedUseControllers: 0
   hideControllerOnUse: 0
   usingState: 0
+--- !u!114 &114000011443309778
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011502661880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7cea054c0a1375408b22fd9439d9138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

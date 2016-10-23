@@ -106,7 +106,7 @@ GameObject:
   - 54: {fileID: 54000012001279018}
   - 114: {fileID: 114000012872900786}
   m_Layer: 0
-  m_Name: beginner book
+  m_Name: 1 beginner book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,10 +233,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011511362526}
-  m_LocalRotation: {x: -0.5245005, y: 0.21165761, z: 0.13649766, w: 0.8133073}
-  m_LocalPosition: {x: 1.117, y: 0.996, z: 4.705}
+  m_LocalRotation: {x: -0.56216204, y: 0.21352191, z: 0.15491866, w: 0.7838255}
+  m_LocalPosition: {x: 0.661, y: 1.786, z: 0.685}
   m_LocalScale: {x: 62.373352, y: 62.373394, z: 62.373394}
-  m_LocalEulerAnglesHint: {x: -65.616005, y: 29.157001, z: 0}
+  m_LocalEulerAnglesHint: {x: -71.316, y: 30.139002, z: 0.485}
   m_Children:
   - {fileID: 4000011708806006}
   - {fileID: 4000010939436880}
@@ -414,7 +414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Mysterious Potion '
+  m_Text: "\u2620\nZombie Bait \u2620 Brew \u2620"
 --- !u!114 &114000010137125778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -447,7 +447,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mysterious Potion A
+  m_Text: Zombie Bait Brew
 --- !u!114 &114000010153638664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -495,17 +495,17 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 105
-    m_Alignment: 0
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1 Crimson Nirnroot
+  m_Text: '1 Red apple
 
-    Stir thrice clockwise
+    1 Brown mushroom
 
-    4 eyes of newt'
+    3 Clockwise stirs'
 --- !u!114 &114000010996048218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -575,7 +575,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A brew to lure dark creatures from the woods... ()
+  m_Text: 'A brew to lure dark creatures from the woods...
+
+    Throw this into your trap to attract a rare creature!'
 --- !u!114 &114000012872900786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,27 +633,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipie:
-    name: 
+    name: Zombie Bait Brew
     steps:
     - requiredIngredients:
       - ingredient: 1
         value: 1
-      maxStepTime: 12
-      minHeat: 0
-      maxHeat: 100
-    - requiredIngredients:
       - ingredient: 7
         value: 1
-      maxStepTime: 12
-      minHeat: 0
-      maxHeat: 100
-    - requiredIngredients:
       - ingredient: 17
         value: 3
       maxStepTime: 0
       minHeat: 0
       maxHeat: 100
-    finalColor: {r: 0.07586217, g: 1, b: 0, a: 1}
+    finalColor: {r: 0, g: 0.7058823, b: 0.26774848, a: 0.616}
     resultPotionPrefab: {fileID: 1000010831847398, guid: a71d3d25a5aa94747a2f7c6fb1fda772,
       type: 2}
 --- !u!114 &114000014245511102

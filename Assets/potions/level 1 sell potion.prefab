@@ -121,11 +121,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootToReturn:
   - {fileID: 1000010363223772, guid: 19d53915fed2866448a11a6440b99bfa, type: 2}
-  - {fileID: 1000010363223772, guid: 19d53915fed2866448a11a6440b99bfa, type: 2}
+  - {fileID: 1000011511362526, guid: d01764821f77b654293ff503d8b2efe0, type: 2}
   - {fileID: 1000011301646284, guid: f7f89915bdfd8ef428a8411957baffaf, type: 2}
-  - {fileID: 1000010363223772, guid: 19d53915fed2866448a11a6440b99bfa, type: 2}
-  - {fileID: 1000011301646284, guid: f7f89915bdfd8ef428a8411957baffaf, type: 2}
-  - {fileID: 1000010561504508, guid: 75bda5e4ffc627d4baaee4c9054f0de7, type: 2}
+  - {fileID: 1000011511362526, guid: 40172dba5c25e7a459baa18a03d4eb26, type: 2}
+  - {fileID: 1000011851875620, guid: 0930cc8504a1d734a8c863fa62238dbc, type: 2}
   - {fileID: 1000010561504508, guid: 75bda5e4ffc627d4baaee4c9054f0de7, type: 2}
 --- !u!114 &114000013331754580
 MonoBehaviour:
