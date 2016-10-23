@@ -233,10 +233,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011511362526}
-  m_LocalRotation: {x: -0.5245005, y: 0.21165761, z: 0.13649766, w: 0.8133073}
-  m_LocalPosition: {x: 0.218, y: 1.567, z: -0.102}
+  m_LocalRotation: {x: -0.51188225, y: 0.21373962, z: 0.13321388, w: 0.82130754}
+  m_LocalPosition: {x: 0.051, y: 1.192, z: 6.4}
   m_LocalScale: {x: 62.373352, y: 62.373394, z: 62.373394}
-  m_LocalEulerAnglesHint: {x: -65.616005, y: 29.157001, z: 0}
+  m_LocalEulerAnglesHint: {x: -63.848003, y: 29.157001, z: 0}
   m_Children:
   - {fileID: 4000011708806006}
   - {fileID: 4000010939436880}
@@ -403,7 +403,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 78cf33fc0d271b44bbe0826901d582cf, type: 3}
-    m_FontSize: 10
+    m_FontSize: 7
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -414,7 +414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mysterious Potion A
+  m_Text: ELIXER OF IMMORTALITY
 --- !u!114 &114000010137125778
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -436,7 +436,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 78cf33fc0d271b44bbe0826901d582cf, type: 3}
-    m_FontSize: 10
+    m_FontSize: 7
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Mysterious Potion A
+  m_Text: ELIXER OF IMMORTALITY
 --- !u!114 &114000010153638664
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -501,11 +501,33 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1 Crimson Nirnroot
+  m_Text: 'Heat to Yellow
 
-    Stir thrice clockwise
+    Add 1 Dragon Scale
 
-    4 eyes of newt'
+    Heat to White
+
+    Add 4 NightShade
+
+    Add 5 Unicorn Tears
+
+    Cool to Red
+
+    Stir Clockwise 6 times
+
+    Add 1 Gold Apple
+
+    Heat to Yellow
+
+    Add 10 Gold coins
+
+    Stir Anti-Clockwise 7 times
+
+    Cool to Blue
+
+    Add 1 Pumpkin
+
+    Stir Clockwise 9 times'
 --- !u!114 &114000010996048218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -575,7 +597,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Recipe Page 1
+  m_Text: Good Luck...
 --- !u!114 &114000012872900786
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -631,16 +653,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipie:
-    name: 
+    name: Elixer of Imortality
     steps:
+    - requiredIngredients:
+      - ingredient: 14
+        value: 1
+      maxStepTime: 0
+      minHeat: 45
+      maxHeat: 80
+    - requiredIngredients:
+      - ingredient: 12
+        value: 4
+      maxStepTime: 10
+      minHeat: 45
+      maxHeat: 100
+    - requiredIngredients:
+      - ingredient: 16
+        value: 5
+      maxStepTime: 8
+      minHeat: 70
+      maxHeat: 100
+    - requiredIngredients:
+      - ingredient: 17
+        value: 6
+      maxStepTime: 10
+      minHeat: 20
+      maxHeat: 100
     - requiredIngredients:
       - ingredient: 0
         value: 1
+      maxStepTime: 5
+      minHeat: 20
+      maxHeat: 55
+    - requiredIngredients:
+      - ingredient: 11
+        value: 10
+      maxStepTime: 18
+      minHeat: 20
+      maxHeat: 80
+    - requiredIngredients:
+      - ingredient: 18
+        value: 7
+      maxStepTime: 12
+      minHeat: 45
+      maxHeat: 80
+    - requiredIngredients:
+      - ingredient: 10
+        value: 1
+      maxStepTime: 8
+      minHeat: 0
+      maxHeat: 80
+    - requiredIngredients:
+      - ingredient: 17
+        value: 9
       maxStepTime: 0
       minHeat: 0
-      maxHeat: 100
-    finalColor: {r: 1, g: 0, b: 0.93103456, a: 1}
-    resultPotionPrefab: {fileID: 0}
+      maxHeat: 30
+    finalColor: {r: 0.88235295, g: 0.6754564, b: 0, a: 1}
+    resultPotionPrefab: {fileID: 1000010831847398, guid: 9b2c3c5307fa4054d9abe8577233e262,
+      type: 2}
 --- !u!114 &114000014245511102
 MonoBehaviour:
   m_ObjectHideFlags: 1
