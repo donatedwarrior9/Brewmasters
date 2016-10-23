@@ -10,11 +10,11 @@ public class RespawnManager : MonoBehaviour {
 	public Transform defaultSpawnPoint;
 	public void Respawn(GameObject toRespawn)
 	{
-		Instantiate (vanishEffectsPrefab, toRespawn.transform.position, Quaternion.identity);
 		Transform spawnAt = GetSpawnPoint (toRespawn);
 		if (!spawnAt)
 			return;
-		Instantiate (vanishEffectsPrefab, spawnAt.transform.position, Quaternion.identity);
+		Instantiate (vanishEffectsPrefab, toRespawn.transform.position, Quaternion.identity);
+		Instantiate (respawnEffectsPrefab, spawnAt.transform.position, Quaternion.identity);
 		toRespawn.transform.position = spawnAt.transform.position;
 		toRespawn.transform.rotation = spawnAt.transform.rotation;
 		Rigidbody toRespawnRigidbody = toRespawn.GetComponent<Rigidbody> ();
@@ -31,6 +31,7 @@ public class RespawnManager : MonoBehaviour {
 					return point.respawnPoint;
 				}
 			}
+			return defaultSpawnPoint;
 		} else if (toRespawn.GetComponent<RespawnMe>()) {
 			foreach (NameRespawnPoint point in nameRespawns) {
 				if (toRespawn.name.Contains(point.nameContains)) {

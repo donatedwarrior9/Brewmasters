@@ -21,10 +21,11 @@ GameObject:
   - 4: {fileID: 4000013944385182}
   - 33: {fileID: 33000012058039472}
   - 23: {fileID: 23000012556603394}
-  - 95: {fileID: 95000010331338982}
   - 114: {fileID: 114000011787856126}
   - 54: {fileID: 54000013079817986}
   - 65: {fileID: 65000010259767962}
+  - 65: {fileID: 65000010047391434}
+  - 114: {fileID: 114000010826801414}
   m_Layer: 0
   m_Name: Dragonscale
   m_TagString: Untagged
@@ -38,10 +39,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013754836476}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.86978364, y: 1.328, z: 0.26469675}
+  m_LocalRotation: {x: 0.063151084, y: -0.056339912, z: 0.605689, w: 0.7911881}
+  m_LocalPosition: {x: -0.8416, y: 1.4074, z: 0.4796}
   m_LocalScale: {x: 0.5, y: 5, z: 5}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 9.626, y: -0.71400005, z: 75.118004}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -96,6 +97,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65000010047391434
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013754836476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01998569, y: 0.011860132, z: 0.009666464}
+  m_Center: {x: -0.001501441, y: 0.007940483, z: -0.00223099}
 --- !u!65 &65000010259767962
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -106,25 +119,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.01998569, y: 0.02637798, z: 0.01998569}
-  m_Center: {x: -0.0015014205, y: 0.00318899, z: -0.0021510692}
---- !u!95 &95000010331338982
-Animator:
-  serializedVersion: 3
+  m_Size: {x: 0.01998569, y: 0.009655714, z: 0.01998569}
+  m_Center: {x: -0.001501441, y: -0.001854229, z: -0.002151069}
+--- !u!114 &114000010826801414
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013754836476}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8ad3c7ccb8abe4845983f864ac73a3b5, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1897566e4c9f294cba1f071ceced850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 14
 --- !u!114 &114000011787856126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,7 +156,7 @@ MonoBehaviour:
   grabOverrideButton: 8
   rumbleOnGrab: {x: 0, y: 0}
   allowedGrabControllers: 0
-  precisionSnap: 0
+  precisionSnap: 1
   rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
   hideControllerOnGrab: 0
