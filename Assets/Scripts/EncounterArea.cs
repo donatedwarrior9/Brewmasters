@@ -37,7 +37,7 @@ public class EncounterArea : MonoBehaviour {
 	public void EnteredTrap(Skeleton enemy)
 	{
 		anni.SetTrigger ("closeTrigger");
-        int random = Mathf.RoundToInt(Random.Range(2, 5));
+		int random = Random.Range(0, enemy.myRewardPrefab.Length);
         for (int i = 0; i < random; i++)
         {
             Vector3 rand = new Vector3((-.987f + Random.Range(0, .35f)), 1.457f, (.095f + Random.Range(0, .35f)));
