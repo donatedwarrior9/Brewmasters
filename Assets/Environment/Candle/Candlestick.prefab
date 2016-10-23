@@ -55,6 +55,7 @@ GameObject:
   - 4: {fileID: 4000011250726400}
   - 33: {fileID: 33000013911969238}
   - 23: {fileID: 23000012269229148}
+  - 136: {fileID: 136000013350153692}
   m_Layer: 0
   m_Name: Candlestick
   m_TagString: Untagged
@@ -70,7 +71,7 @@ Transform:
   m_GameObject: {fileID: 1000014227402810}
   m_LocalRotation: {x: -0, y: 0.34326607, z: -0, w: 0.93923825}
   m_LocalPosition: {x: 1.14, y: 1.019, z: 0.237}
-  m_LocalScale: {x: 16.428152, y: 16.428165, z: 16.428165}
+  m_LocalScale: {x: 16.428154, y: 16.428165, z: 16.428165}
   m_LocalEulerAnglesHint: {x: 0, y: 40.394, z: 0}
   m_Children:
   - {fileID: 4000014162532408}
@@ -221,3 +222,16 @@ Halo:
     serializedVersion: 2
     rgba: 2019523195
   m_Size: 0.04
+--- !u!136 &136000013350153692
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014227402810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.001
+  m_Height: 0.06175147
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

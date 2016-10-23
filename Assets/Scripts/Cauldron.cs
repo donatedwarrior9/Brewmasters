@@ -11,6 +11,8 @@ public class Cauldron : MonoBehaviour {
 		StartCoroutine (StirLoop ());
 	}
 
+	public TitleText messageText;
+
 	// Update is called once per frame
 	void Update () {
 		
@@ -26,9 +28,16 @@ public class Cauldron : MonoBehaviour {
 			AddIngredient(Ingredient.IngredientType.CWStir);
 	}
 
+	bool isfirstPlay = true;
 	public void StartRecipie(Recipie newRecipie)
 	{
 		currentRecipie = newRecipie;
+		if (isfirstPlay)
+			messageText.DisplayMessage (currentRecipie.name, "Place ingredients in the cauldron");
+		else
+			messageText.DisplayMessage (currentRecipie.name, "");
+		isfirstPlay = false;
+
 		currentStep = 0;
 		SetNewColor ();
 		currentStepStartedTime = Time.time;
@@ -78,6 +87,7 @@ public class Cauldron : MonoBehaviour {
 
 	void AddIngredient(Ingredient.IngredientType ingredientType)
 	{
+		messageText.DisplayMessage ("", null);
 		// You need to be working on a recipie
 		if (currentRecipie == null) {
 			Debug.Log ("No current recipie!");
@@ -95,14 +105,17 @@ public class Cauldron : MonoBehaviour {
 		}
 		if (!recipieContainsIngredient)
 		{
+			messageText.DisplayMessage ("Wrong ingredient!", RandomFailString());
 			RecipieFailed();
 			return;
 		}
 		if (heat < GetCurrentStep ().minHeat) {
+			messageText.DisplayMessage ("Not enough heat!", RandomFailString());
 			RecipieFailed();
 			return;
 		}
 		if (heat > GetCurrentStep ().maxHeat) {
+			messageText.DisplayMessage ("Too much heat!", RandomFailString());
 			RecipieFailed();
 			return;
 		}
@@ -128,6 +141,12 @@ public class Cauldron : MonoBehaviour {
 		Instantiate (splashEffectPrefab, ingredientAdded.transform.position, Quaternion.identity);
 	}
 
+	public string[] failureStrings;
+	string RandomFailString()
+	{
+		return failureStrings[Random.Range(0, failureStrings.Length)];
+	}
+
 	void CheckRecipieStatus()
 	{
 		bool allPassConditionsMet = true;
@@ -141,6 +160,7 @@ public class Cauldron : MonoBehaviour {
 						thisIngredientWasAdded = true;
 					else if (addedIngredientAmount.value > requiredIngredient.value)
 					{
+						messageText.DisplayMessage ("Too much of that!", RandomFailString());
 						RecipieFailed ();
 						return;
 					}
@@ -173,8 +193,10 @@ public class Cauldron : MonoBehaviour {
 			RecipiePassed ();
 		else {
 			// If the next step has a timer fail condition, start the timer to instantly fail
-			if (GetCurrentStep().maxStepTime > 0)
-				Invoke("RanOuttaTime", currentRecipie.steps[currentStep].maxStepTime);
+			if (GetCurrentStep ().maxStepTime > 0) {
+				Debug.Log ("Start ranouttatime timer! " + currentRecipie.steps [currentStep].maxStepTime);
+				Invoke ("RanOuttaTime", currentRecipie.steps [currentStep].maxStepTime);
+			}
 		}
 
 	}
@@ -182,7 +204,7 @@ public class Cauldron : MonoBehaviour {
 	float progress = 0;
 	void SetNewColor()
 	{
-		if (currentRecipie != null && currentRecipie.steps.Length > 0) {
+		if (currentRecipie != null && currentRecipie.steps.Length > 0 && currentStep > 0) {
 			progress = (float)currentStep / (float)currentRecipie.steps.Length;
 			desiredColor = Color.Lerp (Random.ColorHSV (0, 1, 0.5f, 1, 0.7f, 1, 1, 1), currentRecipie.finalColor, progress);
 		}
@@ -190,7 +212,6 @@ public class Cauldron : MonoBehaviour {
 			progress = 0;
 			desiredColor = Color.gray;
 		}
-		Debug.Log (progress);
 	}
 
 	public Renderer cauldronSurfaceRenderer;
@@ -223,13 +244,15 @@ public class Cauldron : MonoBehaviour {
 
 	void RanOuttaTime()
 	{
+		messageText.DisplayMessage ("Not fast enough!", RandomFailString());
 		RecipieFailed ();
 	}
 
 	public GameObject victoryEffectsPrefab;
+	public string[] victoryStrings;
 	void RecipiePassed()
 	{
-		Debug.Log ("YOU PASS!");
+		messageText.DisplayMessage (victoryStrings[Random.Range(0, victoryStrings.Length)], currentRecipie.name);
 		Instantiate (victoryEffectsPrefab, cauldronSurfaceRenderer.transform.position, Quaternion.identity);
 		if (currentRecipie.resultPotionPrefab) {
 			RespawnManager respawner = FindObjectOfType<RespawnManager> ();
@@ -245,6 +268,7 @@ public class Cauldron : MonoBehaviour {
 		Debug.Log ("YOU FAIL!");
 		Instantiate (failEffectsPrefab, cauldronSurfaceRenderer.transform.position, Quaternion.identity);
 		DeselectBook ();
+		SetNewColor ();
 	}
 
 	int currentStir = -1;
@@ -275,12 +299,14 @@ public class Cauldron : MonoBehaviour {
 	}
 	public float stirRotationResetRate = 5;
 	public VRTK.Examples.AutoRotation liquidRotation;
+	public AudioSource stirSounds;
 	IEnumerator StirLoop()
 	{
 		while (true) {
 			desiredTurning = Mathf.MoveTowards (desiredTurning, 0, Time.deltaTime * stirRotationResetRate);
 			smoothTurning = Mathf.Lerp (smoothTurning, desiredTurning, Time.deltaTime * 8);
 			liquidRotation.degPerSec = smoothTurning;
+			stirSounds.volume = Mathf.Abs (smoothTurning) / 100;
 			yield return null;
 		}
 	}

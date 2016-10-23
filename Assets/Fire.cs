@@ -10,6 +10,8 @@ public class Fire : MonoBehaviour {
 	public ParticleSystem splashingsystem;
 	public ParticleSystem boilSystem;
 	public ParticleSystem steamSystem;
+	public AudioSource bubblingSounds;
+	public AudioSource fireSounds;
 	public Cauldron cauldron;
 
 	public Transform needle;
@@ -32,9 +34,10 @@ public class Fire : MonoBehaviour {
 	ParticleSystem.EmissionModule splashEmission;
 	ParticleSystem.EmissionModule boilEmission;
 	ParticleSystem.EmissionModule steamEmission;
-
+	float smoothHeat;
 	void Update()
 	{
+		smoothHeat = Mathf.SmoothStep (smoothHeat, cauldron.heat, Time.deltaTime * 5);
 		light1.intensity = Mathf.Clamp(cauldron.heat / 25 + 0.5f, 0.5f, 5);
 		light2.intensity = light1.intensity;
 		desiredrotation = Quaternion.Euler (-90, 0, Mathf.Clamp(cauldron.heat, 0, 100) * 0.4f - 20);
@@ -50,6 +53,8 @@ public class Fire : MonoBehaviour {
 		steamEmission.enabled = cauldron.heat > 25;
 		steamSystem.startColor = Cauldron.smoothedColor;
 		splashingsystem.startColor = Cauldron.smoothedColor;
+		bubblingSounds.volume = smoothHeat / 300;
+		fireSounds.volume = smoothHeat / 300 + 0.05f;
 	}
 	public GameObject stickIgniteEffectPrefab;
 	void OnTriggerEnter(Collider other)
