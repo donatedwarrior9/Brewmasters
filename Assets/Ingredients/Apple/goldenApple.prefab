@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010863316236}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.163, y: 1.331, z: 0.824}
+  m_LocalPosition: {x: -0.634, y: 1.305, z: 0.274}
   m_LocalScale: {x: 3.5, y: 4.1088424, z: 3.4999993}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -137,13 +137,13 @@ MonoBehaviour:
   allowedTouchControllers: 0
   hideControllerOnTouch: 0
   isGrabbable: 1
-  isDroppable: 1
+  validDrop: 1
   isSwappable: 1
   holdButtonToGrab: 1
   grabOverrideButton: 8
   rumbleOnGrab: {x: 0, y: 0}
   allowedGrabControllers: 0
-  precisionSnap: 0
+  precisionSnap: 1
   rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
   hideControllerOnGrab: 0

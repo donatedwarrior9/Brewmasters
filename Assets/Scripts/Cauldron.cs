@@ -30,9 +30,9 @@ public class Cauldron : MonoBehaviour {
 	{
 		currentRecipie = newRecipie;
 		currentStep = 0;
+		SetNewColor ();
 		currentStepStartedTime = Time.time;
 		addedIngredientsThisStep.Clear ();
-		SetNewColor ();
 	}
 
 	public Recipie currentRecipie;
@@ -114,9 +114,10 @@ public class Cauldron : MonoBehaviour {
 		SetNewColor ();
 	}
 
+	public GameObject splashEffectPrefab;
 	void InstantiateSplashEffect(Ingredient ingredientAdded)
 	{
-		Debug.Log ("Splash!");
+		Instantiate (splashEffectPrefab, ingredientAdded.transform.position, Quaternion.identity);
 	}
 
 	void CheckRecipieStatus()
@@ -222,6 +223,7 @@ public class Cauldron : MonoBehaviour {
 	{
 		Debug.Log ("YOU PASS!");
 		Instantiate (victoryEffectsPrefab, cauldronSurfaceRenderer.transform.position, Quaternion.identity);
+		DeselectBook ();
 	}
 
 	public GameObject failEffectsPrefab;
@@ -229,7 +231,7 @@ public class Cauldron : MonoBehaviour {
 	{
 		Debug.Log ("YOU FAIL!");
 		Instantiate (failEffectsPrefab, cauldronSurfaceRenderer.transform.position, Quaternion.identity);
-
+		DeselectBook ();
 	}
 
 	int currentStir = -1;
@@ -282,7 +284,7 @@ public class Cauldron : MonoBehaviour {
 	public float heat;
 	public void AddHeat()
 	{
-		heat += heatIncreasePerStick;
+		heat = Mathf.Clamp(heat + heatIncreasePerStick, 0, 110);
 	}
 	public float heatDecay = 1;
 	public float heatIncreasePerStick = 15;
@@ -303,9 +305,6 @@ public class Cauldron : MonoBehaviour {
 
 	public void DeselectBook()
 	{
-		// Aborts this recipie. Gives you back your ingredients? Does nothing?
-		if (currentStep > 1)
-			RecipieFailed ();
 		currentRecipie = null;
 		currentStep = 0;
 	}
