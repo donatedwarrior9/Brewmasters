@@ -19,10 +19,10 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000013882978340}
-  - 95: {fileID: 95000014098074656}
   - 54: {fileID: 54000011398043364}
   - 65: {fileID: 65000010679356080}
   - 114: {fileID: 114000010781799598}
+  - 114: {fileID: 114000010716531414}
   m_Layer: 0
   m_Name: moonwort
   m_TagString: Untagged
@@ -82,7 +82,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011492214678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8807379, y: 1.319, z: 0.2706521}
+  m_LocalPosition: {x: -0.804, y: 1.405, z: 0.24362683}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -166,23 +166,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0059872507, y: 0.07531367, z: 0.023879742}
   m_Center: {x: 0.00032627583, y: 0.023076296, z: 0.00029118857}
---- !u!95 &95000014098074656
-Animator:
-  serializedVersion: 3
+--- !u!114 &114000010716531414
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011492214678}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: eed4eaacc7e64de4a9a73fa398ca6323, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1897566e4c9f294cba1f071ceced850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 5
 --- !u!114 &114000010781799598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,7 +201,7 @@ MonoBehaviour:
   grabOverrideButton: 8
   rumbleOnGrab: {x: 0, y: 0}
   allowedGrabControllers: 0
-  precisionSnap: 0
+  precisionSnap: 1
   rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
   hideControllerOnGrab: 0

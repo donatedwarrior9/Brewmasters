@@ -12,11 +12,11 @@ public class Henchman : MonoBehaviour {
 	}
 
 	// CHANGE THIS TO TYPE SELLPOTION (not book)
-	Book SellPotionIAmHolding()
+	SellPotion SellPotionIAmHolding()
 	{
 		float closestDist = 9999;
-		Book closePotion = null;
-		foreach (Book potion in FindObjectsOfType<Book>()) {
+		SellPotion closePotion = null;
+		foreach (SellPotion potion in FindObjectsOfType<SellPotion>()) {
 			float dist = Vector3.Distance (potion.transform.position, transform.position);
 			if (dist < closestDist) {
 				closestDist = dist;
@@ -31,24 +31,25 @@ public class Henchman : MonoBehaviour {
 	public NavMeshAgent myAgent;
 	public Transform standingPosition;
 	public Transform travelToPosition;
-
-	IEnumerator GivenPotion(Book potion)
+	IEnumerator GivenPotion(SellPotion potion)
 	{
+		potion.transform.parent = transform;
 		myAnimator.SetTrigger ("leave");
 		yield return new WaitForSeconds (0.25f);
 		myAgent.destination = travelToPosition.position;
 		yield return new WaitForSeconds (1);
 		while (myAgent.remainingDistance > 0.5f)
 			yield return null;
-		// Decide which rewards to do?
-		Destroy (potion.gameObject);
-
+		potion.gameObject.SetActive (false);
 		myAgent.destination = standingPosition.position;
 		yield return new WaitForSeconds (1);
 		while (myAgent.remainingDistance > 0.25f)
 			yield return null;
 		myAnimator.SetTrigger ("place");
 		yield return new WaitForSeconds (0.5f);
-		// Make the rewards appear
+		foreach (GameObject rewardPrefab in potion.lootToReturn) {
+			Instantiate (rewardPrefab, travelToPosition.position + Vector3.up, Quaternion.identity); 
+		}
+		Destroy (potion.gameObject);
 	}
 }

@@ -46,4 +46,7 @@ public class BookStand : MonoBehaviour {
 		Book closestbook = ClosestBook ();
 		closestbook.Close ();
 	}
+
+	public VRTK.VRTK_SnapDropZone snapZone;
+
 }

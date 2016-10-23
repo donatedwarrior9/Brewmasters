@@ -38,10 +38,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012279476012}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.582, y: 1.3581, z: 0.371}
+  m_LocalRotation: {x: 0.19304328, y: 0.031759933, z: 0.5476171, w: 0.81353617}
+  m_LocalPosition: {x: -0.6847, y: 1.4269, z: 0.3608}
   m_LocalScale: {x: 3.5, y: 4.1088424, z: 3.4999993}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 16.168001, y: 15.593, z: 70.458}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: df24bd05efcbc1d408b55c7b30e37282, type: 2}
+  - {fileID: 2100000, guid: 1f45b99fc5d54e740bafe1151a967eb9, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
@@ -125,13 +125,13 @@ MonoBehaviour:
   allowedTouchControllers: 0
   hideControllerOnTouch: 0
   isGrabbable: 1
-  isDroppable: 1
+  validDrop: 1
   isSwappable: 1
   holdButtonToGrab: 1
   grabOverrideButton: 8
   rumbleOnGrab: {x: 0, y: 0}
   allowedGrabControllers: 0
-  precisionSnap: 0
+  precisionSnap: 1
   rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
   hideControllerOnGrab: 0

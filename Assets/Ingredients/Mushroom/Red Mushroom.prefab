@@ -26,7 +26,7 @@ GameObject:
   - 114: {fileID: 114000010077485508}
   - 114: {fileID: 114000010663238242}
   m_Layer: 0
-  m_Name: Red Mushroom 1
+  m_Name: Red Mushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,10 +38,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012279476012}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.0036922, y: 1.3581, z: 0.9421981}
-  m_LocalScale: {x: 3.5, y: 4.1088424, z: 3.4999993}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.42886534, y: -0.56757593, z: 0.39867797, w: 0.5787815}
+  m_LocalPosition: {x: -0.6691, y: 1.3897, z: 0.4451}
+  m_LocalScale: {x: 2.3241649, y: 6.2097964, z: 2.3241644}
+  m_LocalEulerAnglesHint: {x: 71.59901, y: -92.14101, z: -4.477}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -125,13 +125,13 @@ MonoBehaviour:
   allowedTouchControllers: 0
   hideControllerOnTouch: 0
   isGrabbable: 1
-  isDroppable: 1
+  validDrop: 1
   isSwappable: 1
   holdButtonToGrab: 1
   grabOverrideButton: 8
   rumbleOnGrab: {x: 0, y: 0}
   allowedGrabControllers: 0
-  precisionSnap: 0
+  precisionSnap: 1
   rightSnapHandle: {fileID: 0}
   leftSnapHandle: {fileID: 0}
   hideControllerOnGrab: 0
